@@ -31,6 +31,7 @@ public class Event {
         this.nbMaxParticipant = nbMaxParticipant;
     }
 
+    // Envent creator that return the event created
     public Event creaEvent(String title, String theme,
     long startingDate, int length, int nbMaxParticipant,
      String description, Participant organizer, 
