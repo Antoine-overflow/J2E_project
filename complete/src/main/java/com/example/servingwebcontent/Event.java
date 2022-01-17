@@ -31,20 +31,87 @@ public class Event {
         this.nbMaxParticipant = nbMaxParticipant;
     }
 
-    // Envent creator that return the event created
-    public Event creaEvent(String title, String theme,
-    long startingDate, int length, int nbMaxParticipant,
-     String description, Participant organizer, 
-     String type){
-         return new Event(title, theme, startingDate, length,nbMaxParticipant, description, organizer,type);
-     }
+    // Event getters
+    public String getTitle(){
+        return this.title;
+    }
+
+    public String getTheme(){
+        return this.theme;
+    }
+
+    public long getStartingDate(){
+        return this.startingDate;
+    }
+
+    public int getLength(){
+        return this.length;
+    }
+
+    public int nbMaxParticipant(){
+        return this.nbMaxParticipant;
+    }
+
+    public String getDescription(){
+        return this.description;
+    }
+
+    public Participant getOrganizer(){
+        return this.organizer;
+    }
+
+    public String getType(){
+        return this.type;
+    }
+
+    public int getNbParticipant(){
+        return this.nbParticipant;
+    }
+
+    public List<Participant> getParticipants(){
+        return this.participants;
+    }
+    
+    // Event setters
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setTheme(String theme){
+        this.theme = theme;
+    }
+
+    public void setStartingDate(long startingDate){
+        this.startingDate = startingDate;
+    }
+
+    public void setLength(int length){
+        this.length = length;
+    }
+
+    public void setNbMaxParticipant(int nbMaxParticipant){
+        this.nbMaxParticipant = nbMaxParticipant;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setOrganizer(Participant organiser){
+        this.organizer = organiser;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
     // Add a participant to an event
     public void addParticipant(Participant participant){
         //First we check if we can accept the participant
         if (this.nbMaxParticipant<=this.nbParticipant){
             return;
         }
-
+        
         // We add the participant to the list of participant for the event
         this.participants.add(participant);
 

@@ -9,9 +9,8 @@ public class Participant {
     public String enterprise;
     public String comment = "";
 
-    public Participant(String firstName,
-     String lastName, String email, String enterprise,
-      long birthDate){
+    // Participant constructor
+    public Participant(String firstName, String lastName, String email, String enterprise, long birthDate){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -19,9 +18,53 @@ public class Participant {
         this.birthDate = birthDate;
     }
 
-    public Participant createParticipant(String firstName,
-    String lastName, String email, String enterprise,
-     long birthDate){
-         return new Participant(firstName, lastName, email, enterprise, birthDate);
-     }
+    // Participant getters
+    public String getFirstName(){
+        return this.firstName;
+    }
+
+    public String getLastName(){
+        return this.lastName;
+    }
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public long getBirthDate(){
+        return this.birthDate;
+    }
+
+    public String getEnterprise(){
+        return this.enterprise;
+    }
+
+    public String getComment(){
+        return this.comment;
+    }
+
+    // Participant setters
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setBirthDate(long birthDate){
+        this.birthDate = birthDate;
+    }
+
+    public void setEnterprise(String entreprise){
+        this.enterprise = enterprise;
+    }
+
+    public void setComment(String comment){
+        this.comment = comment;
+    }
 }
