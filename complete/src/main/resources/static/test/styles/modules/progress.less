@@ -1,0 +1,26 @@
+@import "../css3/animation";
+@import "../css3/border-radius";
+@import "../css3/horizontal-gradient";
+@import "../pseudo/progress-bar";
+
+.keyframes(slide-in; {
+	0% { left: -100px; opacity: 0; }
+	100% { left: 0; opacity: 1; }
+});
+
+.progress {
+	border: 0;
+	.border-radius(3px);
+	height: 10px;
+	overflow: hidden;
+	.progress-bar({
+		background: @gray_progress;
+		background-size: 35px 10px, 100% 100%, 100% 100%;
+	}, {
+		.animation(slide-in 5s linear 1);
+		.border-radius(3px);
+		.horizontal-gradient(@yellow, @green);
+		position: relative;
+	});
+	width: 400px;
+}

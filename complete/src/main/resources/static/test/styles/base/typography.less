@@ -1,0 +1,26 @@
+@import "../utility/centered";
+
+body, input { font: 95%/1.2 'Open Sans', Helvetica, sans-serif; }
+
+.check-mark {
+	font-weight: bold;
+}
+
+.disclaimer { font-weight: 600; }
+
+legend { font-size: 150%; }
+
+input {
+	.placeholder({
+		font-weight: bold;
+		text-transform: none;
+	});
+	font-weight: 600;
+
+	&.middle-initial, &.state { text-transform: uppercase; }
+}
+
+.persisted-placeholder {
+	font-size: 65%;
+	font-weight: bold;
+}
