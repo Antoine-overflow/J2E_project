@@ -2,23 +2,25 @@ package com.example.servingwebcontent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
+
 
 public class Event {
     
     public String title; //Title of the event
     public String theme; // Theme of the event
-    public long startingDate; // Starting date of the event
+    public Calendar startingDate; // Starting date of the event
     public int length; // Length in days of the event
     public int nbMaxParticipant;   // Number max of participants for the event 
     public String description; // Description of the event
     public Participant organizer; // The organizer of the event
     public String type; //The type of the event
-    private int nbParticipant = 0; // The number of participant for the event
+    private int nbParticipant = 1; // The number of participant for the event
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
     public Event(String title, String theme,
-     long startingDate, int length, int nbMaxParticipant,
+     Calendar startingDate, int length, int nbMaxParticipant,
       String description, Participant organizer, 
       String type){
         this.title = title;
@@ -29,6 +31,8 @@ public class Event {
         this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
+        this.participants = new ArrayList<Participant>();
+        participants.add(organizer);
     }
 
     // Event getters
@@ -40,7 +44,7 @@ public class Event {
         return this.theme;
     }
 
-    public long getStartingDate(){
+    public Calendar getStartingDate(){
         return this.startingDate;
     }
 
@@ -48,7 +52,7 @@ public class Event {
         return this.length;
     }
 
-    public int nbMaxParticipant(){
+    public int getNbMaxParticipant(){
         return this.nbMaxParticipant;
     }
 
@@ -81,7 +85,7 @@ public class Event {
         this.theme = theme;
     }
 
-    public void setStartingDate(long startingDate){
+    public void setStartingDate(Calendar startingDate){
         this.startingDate = startingDate;
     }
 

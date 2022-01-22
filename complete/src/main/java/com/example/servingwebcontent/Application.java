@@ -1,6 +1,8 @@
 package com.example.servingwebcontent;
 
 import java.util.List;
+import java.util.Calendar;
+
 
 public class Application {
     
@@ -15,12 +17,12 @@ public class Application {
         return this.events;
     }
 
-    public Event createEvent(String title, String theme, long startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
+    public Event createEvent(String title, String theme, Calendar startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
      String type){
         return new Event(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
     }
 
-    public Participant createParticipant(String firstName, String lastName, String email, String enterprise, long birthDate){
+    public Participant createParticipant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
          return new Participant(firstName, lastName, email, enterprise, birthDate);
     }
 }

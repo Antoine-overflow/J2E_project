@@ -1,16 +1,18 @@
 package com.example.servingwebcontent;
+import java.util.Calendar;
+
 
 public class Participant {
 
     public String firstName;
     public String lastName;
     public String email;
-    public long birthDate;
+    public Calendar birthDate;
     public String enterprise;
     public String comment = "";
 
     // Participant constructor
-    public Participant(String firstName, String lastName, String email, String enterprise, long birthDate){
+    public Participant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -31,7 +33,7 @@ public class Participant {
         return this.email;
     }
 
-    public long getBirthDate(){
+    public Calendar getBirthDate(){
         return this.birthDate;
     }
 
@@ -56,11 +58,11 @@ public class Participant {
         this.email = email;
     }
 
-    public void setBirthDate(long birthDate){
+    public void setBirthDate(Calendar birthDate){
         this.birthDate = birthDate;
     }
 
-    public void setEnterprise(String entreprise){
+    public void setEnterprise(String enterprise){
         this.enterprise = enterprise;
     }
 
