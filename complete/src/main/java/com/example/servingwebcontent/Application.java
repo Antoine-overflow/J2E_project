@@ -1,28 +1,41 @@
 package com.example.servingwebcontent;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class Application {
     
-    public List<Event> events; // List of all the events 
-    public List<Participant> participants; // List of all the participants
+    public List<Event> events = new ArrayList<Event>(); // List of all the events 
+    public List<Participant> participants = new ArrayList<Participant>(); // List of all the participants
 
-    public void addEvent(Event event){
-        this.events.add(event);
+    //Application constructor
+    public Application(List<Event> events, List<Participant> participants){
+        this.events = events;
+        this.participants = participants;
     }
 
+    //Getters
     public List<Event> getEvents(){
         return this.events;
     }
 
+    public List<Participant> getParticipants(){
+        return this.participants;
+    }
+
     public Event createEvent(String title, String theme, Calendar startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
      String type){
-        return new Event(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
+        Event e = new Event(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
+        this.events.add(e);
+        this.participants.add(organizer);
+        return e;
     }
 
     public Participant createParticipant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
-         return new Participant(firstName, lastName, email, enterprise, birthDate);
+        Participant p = new Participant(firstName, lastName, email, enterprise, birthDate);
+        this.participants.add(p);
+        return p;
     }
 }

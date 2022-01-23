@@ -1,5 +1,6 @@
 package com.example.servingwebcontent;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
@@ -121,5 +122,18 @@ public class Event {
 
         // We increment the number of participant
         this.nbParticipant++;
+    }
+
+    //Detail display of the event
+    public void displayEvent(){
+        System.out.println("Event title : " + this.title);
+        System.out.println("Event theme : " + this.theme);
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Event starting date : " + date_format.format(this.startingDate.getTime()));
+        System.out.println("Event day duration : " + Integer.toString(this.length));
+        System.out.println("Event max participant : " + Integer.toString(this.nbMaxParticipant));
+        System.out.println("Event description : " + this.description);        
+        System.out.println("Event organizer name : " + this.organizer.getFirstName() + " " + this.organizer.getLastName());
+        System.out.println("Event type : " + this.type);
     }
 }
