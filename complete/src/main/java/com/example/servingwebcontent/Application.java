@@ -38,4 +38,18 @@ public class Application {
         this.participants.add(p);
         return p;
     }
+
+    // Method that return the list of title of events in the app, if the argument is True, the method display titles
+    public List<String> listEvents(Boolean display){
+        List<Event> events = this.getEvents();
+        List<String> titles = new ArrayList<String>();
+        for(int k=0; k<events.size();k++){
+            String title = events.get(k).getTitle();
+            if(display){
+                System.out.println("Event n° " + Integer.toString(k+1) + " : " + title);
+            }
+            titles.add(title);
+        }
+        return titles;
+    }
 }

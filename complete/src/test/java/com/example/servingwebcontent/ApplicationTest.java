@@ -51,6 +51,7 @@ public class ApplicationTest {
         birthDate.set(1967-1900,19,8);
         Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         String type = "investure";
+        Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
 
         // Application creation
         List<Event> events = new ArrayList<Event>();
@@ -58,11 +59,57 @@ public class ApplicationTest {
         Application app = new Application(events, participants);
 
         Event e = app.createEvent(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
-        Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
 
         testEventEquality(e, CEOinvesture);
         Assert.assertEquals(app.getEvents().size(),1);
         Assert.assertEquals(app.getParticipants().size(),1);
     }
     
+    @Test
+    public void testCreateParticipant(){
+        // Participant creation
+        Calendar birthDate = Calendar.getInstance();
+        birthDate.set(1967-1900,19,8);
+        Participant satya = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
+        
+        // Application creation
+        List<Event> events = new ArrayList<Event>();
+        List<Participant> participants = new ArrayList<Participant>();
+        Application app = new Application(events, participants);
+
+        Participant satya2 = app.createParticipant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
+
+        testPartcipantEquality(satya, satya2);
+        Assert.assertEquals(app.getParticipants().size(), 1);
+    }
+
+    @Test
+    public void testListEvents(){
+        // Application creation
+        List<Event> events = new ArrayList<Event>();
+        List<Participant> participants = new ArrayList<Participant>();
+        Application app = new Application(events, participants);
+
+        // Event creation
+        Calendar startingDate = Calendar.getInstance();
+        startingDate.set(2022-1900,2,2);
+        Calendar birthDate = Calendar.getInstance();
+        birthDate.set(1967-1900,19,8);
+        Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
+        Event CEOinvesture = app.createEvent("new CEO investure", "investure" ,startingDate ,1 ,1000000 ,"Investure of ower new CEO" ,organizer ,"investure");
+
+        Calendar birthDateJ = Calendar.getInstance();
+        birthDateJ.set(1998,2-1,21);
+        Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
+        Calendar startingDate2 = Calendar.getInstance();
+        startingDate.set(2022,2-1,15);
+        Event anniv = app.createEvent("anniv", "anniversaire", startingDate2, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
+
+        List<String> titles = app.listEvents(false);
+        List<String> titles2 = new ArrayList<String>();
+        titles2.add(CEOinvesture.getTitle());
+        titles2.add(anniv.getTitle());
+        Assert.assertEquals(titles2, titles);
+        List<String> titles3 = app.listEvents(true);
+    }
 }
