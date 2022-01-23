@@ -1,4 +1,5 @@
 package com.example.servingwebcontent;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
@@ -68,5 +69,15 @@ public class Participant {
 
     public void setComment(String comment){
         this.comment = comment;
+    }
+
+    // Display detail of a participant
+    public void displayParticipant(){
+        System.out.println("Participant first name " + this.firstName);
+        System.out.println("Participant last name " + this.lastName);
+        System.out.println("Participant email adress " + this.email);
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Participant birthdate " + date_format.format(this.birthDate.getTime()));
+        System.out.println("Participant enterprise " + this.enterprise);
     }
 }
