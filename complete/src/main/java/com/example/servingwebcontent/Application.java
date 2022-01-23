@@ -52,4 +52,23 @@ public class Application {
         }
         return titles;
     }
+
+    public List<List<String>> listParticipants(Event event, Boolean display){
+        List<Participant> participant = this.getParticipants();
+        List<String> firstNames = new ArrayList<String>();
+        List<String> lastNames = new ArrayList<String>();
+        for(int k=0; k<participant.size();k++){
+            String firstName = participant.get(k).getFirstName();
+            String lastName = participant.get(k).getLastName();
+            if(display){
+                System.out.println("Participant n° " + Integer.toString(k+1) + " : " + firstName + " " + lastName);
+            }
+            firstNames.add(firstName);
+            lastNames.add(lastName);
+        }
+        List<List<String>> result = new ArrayList<List<String>>();
+        result.add(firstNames);
+        result.add(lastNames);
+        return result;
+    }
 }

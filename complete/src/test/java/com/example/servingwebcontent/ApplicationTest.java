@@ -112,4 +112,31 @@ public class ApplicationTest {
         Assert.assertEquals(titles2, titles);
         List<String> titles3 = app.listEvents(true);
     }
+
+    @Test
+    public void testListParticipants(){
+        // Application creation
+        List<Event> events = new ArrayList<Event>();
+        List<Participant> participants = new ArrayList<Participant>();
+        Application app = new Application(events, participants);
+
+        // Event creation
+        Calendar birthDateJ = Calendar.getInstance();
+        birthDateJ.set(1998,2-1,21);
+        Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
+        Calendar startingDate = Calendar.getInstance();
+        startingDate.set(2022,2-1,15);
+        Event anniv = app.createEvent("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
+
+        List<List<String>> names = app.listParticipants(anniv, false);
+        List<List<String>> names2 = new ArrayList<List<String>>();
+        List<String> firstNames = new ArrayList<String>();
+        firstNames.add(jules.getFirstName());
+        List<String> lastNames = new ArrayList<String>();
+        lastNames.add(jules.getLastName());
+        names2.add(firstNames);
+        names2.add(lastNames);
+        Assert.assertEquals(names, names2);
+        List<List<String>> names3 = app.listParticipants(anniv, true);
+    }
 }
