@@ -1,3 +1,16 @@
+/* 
+COLOR:
+Dark: #202020
+Dark green: #1B2E28
+Green: #1C4A47
+Light Green: #007261
+Light: #B1D2DB
+
+*/
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +18,93 @@
 }
 
 body {
-    background-color: brown;
+    background-color: #202020;
+}
+
+h1 {
+    color: #B1D2DB;
+    font-family: 'Josefin Sans';
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #B1D2DB;
+    font-family: 'Josefin Sans';
+    margin-bottom: 5px;
+}
+
+.form-box {
+    width: 800px;
+    height: fit-content;
+    background-color: #1B2E28;
+    border-radius: 40px;
+    padding: 40px;
+    margin: 50px auto 0 auto;
+}
+
+.input {
+    width: 400px;
+    height:50px;
+    margin-bottom: 10px;
+    padding: 25px 25px;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: #B1D2DB;
+    background-color: #1B2E28;
+    color: #B1D2DB;
+    font-family: 'Josefin Sans';
+    transition: 0.25s;
+}
+
+.input:hover {
+    width: 100%;
+    border-color: #1C4A47;
+    cursor: pointer;
+}
+
+.input:focus {
+    width: 100%;
+    border-color: #1C4A47;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #B1D2DB;
+    border-radius: 25px;
+    background-color: #1B2E28;
+    color: #B1D2DB;
+    font-family: "Josefin Sans";
+    transition: 0.25s;
+}
+
+.submit {
+    margin: 25px auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    border-color: #B1D2DB;
+    border-style: solid;
+    background-color: #1B2E28;
+    color: #B1D2DB;
+    font-family: 'Josefin Sans';
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+.submit:hover {
+    color: #1C4A47;
+    border-color: #1C4A47;
+    cursor: pointer;
+}
+
+.submit:focus {
+    color: #1C4A47;
+    border-color: #1C4A47;
 }
