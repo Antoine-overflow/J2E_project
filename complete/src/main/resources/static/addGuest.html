@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Add Guest - PJEE</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/style.css"></style>
+    <script src="scripts/form.js"></script>
+</head>
+<body>
+    <div style="width: 100vw;height:100vh;display: flex;">
+        <div class="form-box">
+            <h1>Create User</h1>
+            <form action="" method="post">
+                <h3>First Name:</h3>
+                <input type="text" id="input-first-name" class="input" name="user_first_name" placeholder="First Name">
+                <h3>Last Name:</h3>
+                <input type="text" id="input-last-name" class="input" name="user_last_name" placeholder="Last Name">
+                <h3>Email:</h3>
+                <input type="email" id="input-mail" class="input" name="user_mail" placeholder="Email">
+                <h3>Birth date:</h3>
+                <input type="date" id="input-birth" class="input" name="user_birth" placeholder="Birth Date">
+                <h3>Company:</h3>
+                <input type="text" id="input-company" class="input" name="user_company" placeholder="Company">
+                <h3>Comment (optional):</h3>
+                <textarea id="input-comment" class="comment" name="user_comment" placeholder="Comment"></textarea>
+                <div style="width: 100%; text-align: center;">
+                    <input type='submit' id="submit-user" class="submit" name="user_submit" value="+"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/createUser.js"></script>
+</body>
+</html>

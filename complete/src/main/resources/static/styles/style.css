@@ -11,10 +11,14 @@ Light: #B1D2DB
 /* Font */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
+
+
+/********************** General rules ****************************/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 body {
@@ -31,6 +35,11 @@ h3 {
     color: #B1D2DB;
     font-family: 'Josefin Sans';
     margin-bottom: 5px;
+}
+
+p {
+    color: #B1D2DB;
+    font-family: 'Josefin Sans';
 }
 
 .form-box {
@@ -107,4 +116,91 @@ textarea {
 .submit:focus {
     color: #1C4A47;
     border-color: #1C4A47;
+}
+
+
+.button {
+    background-color: #1B2E28;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #1C4A47;
+    color: #1C4A47;
+    font-family: 'Josefin Sans';
+    transition: 0.25;
+    margin: 0 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    border-color: #B1D2DB;
+}
+
+.button:focus {
+    cursor: pointer;
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    border-color: #B1D2DB;
+}
+
+.separator {
+    height: 3px;
+    width: 100%;
+    background-color: #B1D2DB;
+    margin: 20px 0;
+}
+
+
+/****************************************************** Guest *********************************************/
+
+.row-guest {
+    background-color: none;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 3px;
+    display: flex;
+}
+
+.row-guest-contain {
+    background-color: #1C4A47;
+    height: 100%;
+    width: calc(100% - 25px);
+    display: flex;
+}
+
+.row-guest-delete {
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    height: 100%;
+    width: 25px;
+    transition: 0.25s;
+    display: flex;
+}
+
+.row-guest-delete > p {
+    margin: auto;
+}
+
+.row-guest-delete:hover {
+    cursor:pointer;
+    background-color: red;
+}
+
+.row-guest-delete:focus {
+    background-color: red;
+}
+
+.row-guest-text {
+    display: flex;
+    padding: 0 25px;
+    color: #B1D2DB;
+    width: 20%;
+    height: 25px;
+}
+
+.row-guest-text > p {
+    margin: auto 0;
 }
