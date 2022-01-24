@@ -1,42 +1,17 @@
-git <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head> 
-    <title>Login - PJEE</title> 
+    <title>Home - PJEE</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles/style.css"></style>
-    <script src="scripts/login.js"></script>
 </head>
 <body>
-    <div style="width: 100vw;height:100vh;">
-        <form action="scripts/login.js" method="post">
-            <div>
-                <label for="InputFirstName">First Name :</label>
-                <input type="text" id="InputFirstName" name="first_name">
-            </div>
-            <div>
-                <label for="InputLastName">Last Name :</label>
-                <input type="text" id="InputLastName" name="last_name">
-            </div>
-            <div>
-                <label for="InputMail">e-mail :</label>
-                <input type="email" id="InputMail" name="user_mail">
-            </div>
-            <div>
-                <label for="InputeBirth">Date :</label>
-                <input type="date" id="InputBirth" name="user_birth">
-            </div>
-            <div>
-                <label for="InputCompany">Company :</label>
-                <input type="text" id="InputCompany" name="user_company">
-            </div>
-            <div>
-                <label for="comment">Comment :</label>
-                <textarea id="comment" name="user_comment"></textarea>
-            </div>
-            <div>
-                <input type='submit' id="InputSubmit" name="user_submit"></input>
-            </div>
-        </form>
+    <div style="width: 100vw;height:100vh;display: flex;">
+        <div class="form-box">
+            <h1>Acceuil Administrateur :</h1>
+            <button id="button-add-guest" class="button" onclick="window.location.href = 'manageGuest.html';"">Manage Guest</button>
+            <button id="button-add-guest" class="button">Manage Event</button>
+            <script src="scripts/home.js"></script>
+        </div>
     </div>
 </body>
-</html>
