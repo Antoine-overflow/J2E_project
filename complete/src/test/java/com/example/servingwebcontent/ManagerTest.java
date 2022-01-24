@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ApplicationTest {
+public class ManagerTest {
 
     @Test
-    public void testApplicationConstructor(){
+    public void testManagerConstructor(){
         List<Event> events = new ArrayList<Event>();
         List<Participant> participants = new ArrayList<Participant>();
-        Application app = new Application(events, participants);
+        Manager app = new Manager(events, participants);
         Assert.assertEquals(app.getEvents(),events);
         Assert.assertEquals(app.getParticipants(),participants);
     }
@@ -53,10 +53,10 @@ public class ApplicationTest {
         String type = "investure";
         Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
 
-        // Application creation
+        // Manager creation
         List<Event> events = new ArrayList<Event>();
         List<Participant> participants = new ArrayList<Participant>();
-        Application app = new Application(events, participants);
+        Manager app = new Manager(events, participants);
 
         Event e = app.createEvent(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
 
@@ -72,10 +72,10 @@ public class ApplicationTest {
         birthDate.set(1967-1900,19,8);
         Participant satya = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         
-        // Application creation
+        // Manager creation
         List<Event> events = new ArrayList<Event>();
         List<Participant> participants = new ArrayList<Participant>();
-        Application app = new Application(events, participants);
+        Manager app = new Manager(events, participants);
 
         Participant satya2 = app.createParticipant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
 
@@ -85,10 +85,10 @@ public class ApplicationTest {
 
     @Test
     public void testListEvents(){
-        // Application creation
+        // Manager creation
         List<Event> events = new ArrayList<Event>();
         List<Participant> participants = new ArrayList<Participant>();
-        Application app = new Application(events, participants);
+        Manager app = new Manager(events, participants);
 
         // Event creation
         Calendar startingDate = Calendar.getInstance();
@@ -115,10 +115,10 @@ public class ApplicationTest {
 
     @Test
     public void testListParticipants(){
-        // Application creation
+        // Manager creation
         List<Event> events = new ArrayList<Event>();
         List<Participant> participants = new ArrayList<Participant>();
-        Application app = new Application(events, participants);
+        Manager app = new Manager(events, participants);
 
         // Event creation
         Calendar birthDateJ = Calendar.getInstance();

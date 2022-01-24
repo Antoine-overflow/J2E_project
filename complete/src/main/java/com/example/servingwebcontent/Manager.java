@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class Application {
+public class Manager {
     
     public List<Event> events = new ArrayList<Event>(); // List of all the events 
     public List<Participant> participants = new ArrayList<Participant>(); // List of all the participants
 
-    //Application constructor
-    public Application(List<Event> events, List<Participant> participants){
+    //Manager constructor
+    public Manager(List<Event> events, List<Participant> participants){
         this.events = events;
         this.participants = participants;
     }
