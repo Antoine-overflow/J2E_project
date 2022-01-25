@@ -1,6 +1,4 @@
 package com.example.servingwebcontent.Metier;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -26,9 +24,8 @@ public class Participant {
     @Column(name ="email")
     public String email;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name ="birthDate")
-    public Calendar birthDate;
+    public String birthDate;
 
     @Column(name ="enterprise")
     public String enterprise;
@@ -39,7 +36,7 @@ public class Participant {
     // Participant constructor
     public Participant(){} // For Hibernate
 
-    public Participant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){ // For java
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate){ // For java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -64,7 +61,7 @@ public class Participant {
         return this.email;
     }
 
-    public Calendar getBirthDate(){
+    public String getBirthDate(){
         return this.birthDate;
     }
 
@@ -89,7 +86,7 @@ public class Participant {
         this.email = email;
     }
 
-    public void setBirthDate(Calendar birthDate){
+    public void setBirthDate(String birthDate){
         this.birthDate = birthDate;
     }
 
@@ -106,8 +103,7 @@ public class Participant {
         System.out.println("Participant first name " + this.firstName);
         System.out.println("Participant last name " + this.lastName);
         System.out.println("Participant email adress " + this.email);
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("Participant birthdate " + date_format.format(this.birthDate.getTime()));
+        System.out.println("Participant birthdate " + this.birthDate);
         System.out.println("Participant enterprise " + this.enterprise);
     }
 }
