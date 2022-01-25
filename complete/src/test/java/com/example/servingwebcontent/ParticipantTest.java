@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 
+import com.example.servingwebcontent.Metier.Participant;
+
 public class ParticipantTest {
     
     @Test

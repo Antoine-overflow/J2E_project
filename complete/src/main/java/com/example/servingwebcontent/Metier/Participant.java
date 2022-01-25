@@ -1,19 +1,45 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Metier;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Embeddable
+@Table(name = "Participants")
 public class Participant {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name = "id")
+    private long id;
+
+    @Column(name ="first_name")
     public String firstName;
+
+    @Column(name ="last_name")
     public String lastName;
+
+    @Column(name ="email")
     public String email;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name ="birthDate")
     public Calendar birthDate;
+
+    @Column(name ="enterprise")
     public String enterprise;
+
+    @Column(name ="comment")
     public String comment = "";
 
     // Participant constructor
-    public Participant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
+    public Participant(){} // For Hibernate
+
+    public Participant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){ // For java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,6 +48,10 @@ public class Participant {
     }
 
     // Participant getters
+    public long getId(){
+        return this.id;
+    }
+
     public String getFirstName(){
         return this.firstName;
     }
