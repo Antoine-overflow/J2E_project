@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Session;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
-import com.example.servingwebcontent.Session.GreetingController;
 
 import org.junit.jupiter.api.Test;
 

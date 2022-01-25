@@ -1,10 +1,9 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Metier;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import com.example.servingwebcontent.Metier.Event;
@@ -46,13 +45,11 @@ public class ManagerTest {
         // Event creation
         String title = "new CEO investure";
         String theme = "investure";
-        Calendar startingDate = Calendar.getInstance();
-        startingDate.set(2022-1900,2,2);
+        String startingDate = "2022-2-2";
         int length = 1;
         int nbMaxParticipant = 1000000;
         String description = "Investure of ower new CEO";
-        Calendar birthDate = Calendar.getInstance();
-        birthDate.set(1967-1900,19,8);
+        String birthDate = "1967-8-19";
         Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         String type = "investure";
         Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
@@ -72,8 +69,7 @@ public class ManagerTest {
     @Test
     public void testCreateParticipant(){
         // Participant creation
-        Calendar birthDate = Calendar.getInstance();
-        birthDate.set(1967-1900,19,8);
+        String birthDate = "1967-8-19";
         Participant satya = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         
         // Manager creation
@@ -95,18 +91,14 @@ public class ManagerTest {
         Manager app = new Manager(events, participants);
 
         // Event creation
-        Calendar startingDate = Calendar.getInstance();
-        startingDate.set(2022-1900,2,2);
-        Calendar birthDate = Calendar.getInstance();
-        birthDate.set(1967-1900,19,8);
+        String startingDate = "2022-2-2";
+        String birthDate = "1967-8-19";
         Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         Event CEOinvesture = app.createEvent("new CEO investure", "investure" ,startingDate ,1 ,1000000 ,"Investure of ower new CEO" ,organizer ,"investure");
 
-        Calendar birthDateJ = Calendar.getInstance();
-        birthDateJ.set(1998,2-1,21);
+        String birthDateJ = "1998-2-21";
         Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
-        Calendar startingDate2 = Calendar.getInstance();
-        startingDate.set(2022,2-1,15);
+        String startingDate2 = "2022-2-15";
         Event anniv = app.createEvent("anniv", "anniversaire", startingDate2, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
 
         List<String> titles = app.listEvents(false);
@@ -125,11 +117,9 @@ public class ManagerTest {
         Manager app = new Manager(events, participants);
 
         // Event creation
-        Calendar birthDateJ = Calendar.getInstance();
-        birthDateJ.set(1998,2-1,21);
+        String birthDateJ = "1998-2-21";
         Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
-        Calendar startingDate = Calendar.getInstance();
-        startingDate.set(2022,2-1,15);
+        String startingDate = "2022-2-15";
         Event anniv = app.createEvent("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
 
         List<List<String>> names = app.listParticipants(anniv, false);
