@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+    <hibernate-configuration>
+        <session-factory>
+            <property name="connection.driver_class">org.postgresql.Driver</property>
+            <property name="connection.url">jdbc:postgresql://localhost:5432/test</property>
+            <property name="connection.username">test</property>
+            <property name="connection.password">test</property>
+
+            <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+            <property name="hibernate.hbm2ddl.auto">create</property>
+            <property name="hibernate.show_sql">true</property>
+            <mapping class="com.example.servingwebcontent.Participant"/>
+            <mapping class="com.example.servingwebcontent.Event"/>
+        </session-factory>
+    </hibernate-configuration>

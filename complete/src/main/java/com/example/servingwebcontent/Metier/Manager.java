@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Metier;
 
 import java.util.List;
 import java.util.ArrayList;
