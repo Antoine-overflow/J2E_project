@@ -1,27 +1,63 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Metier;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Events")
 public class Event {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name ="title")
     public String title; //Title of the event
+
+    @Column(name ="theme")
     public String theme; // Theme of the event
-    public Calendar startingDate; // Starting date of the event
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name ="Starting date")
+    public String startingDate; // Starting date of the event
+
+    @Column(name ="Day duration")
     public int length; // Length in days of the event
+
+    @Column(name ="Max number of participants")
     public int nbMaxParticipant;   // Number max of participants for the event 
+
+    @Column(name ="descrption")
     public String description; // Description of the event
+
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
+    @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
+    @AttributeOverride(name = "email",column = @Column(name = "email")),
+    @AttributeOverride(name = "enterprise",column = @Column(name = "enterprise")),
+    @AttributeOverride(name = "comment",column = @Column(name = "comment")),
+    @AttributeOverride(name = "birthDate",column = @Column(name = "birthdate")) })
     public Participant organizer; // The organizer of the event
+
+    @Column(name ="type")
     public String type; //The type of the event
+
+    @Column(name ="Number of participant")
     private int nbParticipant = 1; // The number of participant for the event
+
+    @OneToMany
+    @JoinColumn(name = "Participant_Id")
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
-    public Event(String title, String theme,
-     Calendar startingDate, int length, int nbMaxParticipant,
+    public Event(){} // For Hibernate
+
+    public Event(String title, String theme,        // For Java
+     String startingDate, int length, int nbMaxParticipant,
       String description, Participant organizer, 
       String type){
         this.title = title;
@@ -37,6 +73,10 @@ public class Event {
     }
 
     // Event getters
+    public long getId(){
+        return this.id;
+    }
+    
     public String getTitle(){
         return this.title;
     }
@@ -45,7 +85,7 @@ public class Event {
         return this.theme;
     }
 
-    public Calendar getStartingDate(){
+    public String getStartingDate(){
         return this.startingDate;
     }
 
@@ -86,7 +126,7 @@ public class Event {
         this.theme = theme;
     }
 
-    public void setStartingDate(Calendar startingDate){
+    public void setStartingDate(String startingDate){
         this.startingDate = startingDate;
     }
 
@@ -128,8 +168,7 @@ public class Event {
     public void displayEvent(){
         System.out.println("Event title : " + this.title);
         System.out.println("Event theme : " + this.theme);
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("Event starting date : " + date_format.format(this.startingDate.getTime()));
+        System.out.println("Event starting date : " + this.startingDate);
         System.out.println("Event day duration : " + Integer.toString(this.length));
         System.out.println("Event max participant : " + Integer.toString(this.nbMaxParticipant));
         System.out.println("Event description : " + this.description);        

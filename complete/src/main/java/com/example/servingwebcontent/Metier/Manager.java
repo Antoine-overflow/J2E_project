@@ -1,8 +1,7 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.Metier;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 public class Manager {
@@ -25,7 +24,7 @@ public class Manager {
         return this.participants;
     }
 
-    public Event createEvent(String title, String theme, Calendar startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
+    public Event createEvent(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
      String type){
         Event e = new Event(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
         this.events.add(e);
@@ -33,7 +32,7 @@ public class Manager {
         return e;
     }
 
-    public Participant createParticipant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
+    public Participant createParticipant(String firstName, String lastName, String email, String enterprise, String birthDate){
         Participant p = new Participant(firstName, lastName, email, enterprise, birthDate);
         this.participants.add(p);
         return p;

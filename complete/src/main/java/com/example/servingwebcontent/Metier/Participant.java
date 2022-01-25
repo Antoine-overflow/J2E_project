@@ -1,19 +1,42 @@
-package com.example.servingwebcontent;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+package com.example.servingwebcontent.Metier;
 
+import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Embeddable
+@Table(name = "Participants")
 public class Participant {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name = "id")
+    private long id;
+
+    @Column(name ="first_name")
     public String firstName;
+
+    @Column(name ="last_name")
     public String lastName;
+
+    @Column(name ="email")
     public String email;
-    public Calendar birthDate;
+
+    @Column(name ="birthDate")
+    public String birthDate;
+
+    @Column(name ="enterprise")
     public String enterprise;
+
+    @Column(name ="comment")
     public String comment = "";
 
     // Participant constructor
-    public Participant(String firstName, String lastName, String email, String enterprise, Calendar birthDate){
+    public Participant(){} // For Hibernate
+
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate){ // For java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,6 +45,10 @@ public class Participant {
     }
 
     // Participant getters
+    public long getId(){
+        return this.id;
+    }
+
     public String getFirstName(){
         return this.firstName;
     }
@@ -34,7 +61,7 @@ public class Participant {
         return this.email;
     }
 
-    public Calendar getBirthDate(){
+    public String getBirthDate(){
         return this.birthDate;
     }
 
@@ -59,7 +86,7 @@ public class Participant {
         this.email = email;
     }
 
-    public void setBirthDate(Calendar birthDate){
+    public void setBirthDate(String birthDate){
         this.birthDate = birthDate;
     }
 
@@ -76,8 +103,7 @@ public class Participant {
         System.out.println("Participant first name " + this.firstName);
         System.out.println("Participant last name " + this.lastName);
         System.out.println("Participant email adress " + this.email);
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("Participant birthdate " + date_format.format(this.birthDate.getTime()));
+        System.out.println("Participant birthdate " + this.birthDate);
         System.out.println("Participant enterprise " + this.enterprise);
     }
 }
