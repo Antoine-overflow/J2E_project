@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.servingwebcontent.Metier.Event;
-import com.example.servingwebcontent.Metier.Participant;
-
 public class EventTest {
     
     @Test

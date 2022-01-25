@@ -3,8 +3,6 @@ package com.example.servingwebcontent.Metier;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import com.example.servingwebcontent.Metier.Participant;
-
 public class ParticipantTest {
     
     @Test

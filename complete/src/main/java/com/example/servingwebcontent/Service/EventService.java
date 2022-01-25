@@ -1,6 +1,5 @@
 package com.example.servingwebcontent.Service;
 
-import java.util.Calendar;
 import java.util.List;
 
 import com.example.servingwebcontent.Metier.Event;
@@ -17,7 +16,7 @@ public class EventService {
     public EventService() {
     }
 
-    public long create(String title, String theme, Calendar startingDate,
+    public long create(String title, String theme, String startingDate,
                        int length, int nb_part_max , String description,
                        Participant organisateur, String type) {
         Event event = new Event(title, theme, startingDate, length, nb_part_max, description, organisateur, type);

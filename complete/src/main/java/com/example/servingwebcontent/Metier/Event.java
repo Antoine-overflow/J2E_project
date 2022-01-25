@@ -1,9 +1,7 @@
 package com.example.servingwebcontent.Metier;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -22,9 +20,8 @@ public class Event {
     @Column(name ="theme")
     public String theme; // Theme of the event
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name ="Starting date")
-    public Calendar startingDate; // Starting date of the event
+    public String startingDate; // Starting date of the event
 
     @Column(name ="Day duration")
     public int length; // Length in days of the event
@@ -59,7 +56,7 @@ public class Event {
     public Event(){} // For Hibernate
 
     public Event(String title, String theme,        // For Java
-     Calendar startingDate, int length, int nbMaxParticipant,
+     String startingDate, int length, int nbMaxParticipant,
       String description, Participant organizer, 
       String type){
         this.title = title;
@@ -87,7 +84,7 @@ public class Event {
         return this.theme;
     }
 
-    public Calendar getStartingDate(){
+    public String getStartingDate(){
         return this.startingDate;
     }
 
@@ -128,7 +125,7 @@ public class Event {
         this.theme = theme;
     }
 
-    public void setStartingDate(Calendar startingDate){
+    public void setStartingDate(String startingDate){
         this.startingDate = startingDate;
     }
 
@@ -170,8 +167,7 @@ public class Event {
     public void displayEvent(){
         System.out.println("Event title : " + this.title);
         System.out.println("Event theme : " + this.theme);
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("Event starting date : " + date_format.format(this.startingDate.getTime()));
+        System.out.println("Event starting date : " + this.startingDate);
         System.out.println("Event day duration : " + Integer.toString(this.length));
         System.out.println("Event max participant : " + Integer.toString(this.nbMaxParticipant));
         System.out.println("Event description : " + this.description);        

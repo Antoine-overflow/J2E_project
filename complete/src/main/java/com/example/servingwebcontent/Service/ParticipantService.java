@@ -1,6 +1,5 @@
 package com.example.servingwebcontent.Service;
 
-import java.util.Calendar;
 
 import com.example.servingwebcontent.Metier.Participant;
 import com.example.servingwebcontent.Session.HibernateUtils;
@@ -14,7 +13,7 @@ public class ParticipantService {
     public ParticipantService() {
     }
 
-    public long create(String firstName, String lastName, String email, Calendar birthDate,String enterprise) {
+    public long create(String firstName, String lastName, String email, String birthDate,String enterprise) {
         Participant participant = new Participant(firstName, lastName, email, enterprise, birthDate);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
