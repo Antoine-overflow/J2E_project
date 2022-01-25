@@ -10,19 +10,19 @@
     <div style="width: 100vw;height:100vh;display: flex;">
         <div class="form-box">
             <h1>Create User</h1>
-            <form action="/addUser" method="post">
+            <form action="/saveParticipant" method="post">
                 <h3>First Name:</h3>
-                <input type="text" id="input-first-name" class="input" name="user_first_name" placeholder="First Name">
+                <input type="text" id="input-first-name" class="input" name="firstName" placeholder="First Name">
                 <h3>Last Name:</h3>
-                <input type="text" id="input-last-name" class="input" name="user_last_name" placeholder="Last Name">
+                <input type="text" id="input-last-name" class="input" name="lastName" placeholder="Last Name">
                 <h3>Email:</h3>
-                <input type="email" id="input-mail" class="input" name="user_mail" placeholder="Email">
+                <input type="email" id="input-mail" class="input" name="email" placeholder="Email">
                 <h3>Birth date:</h3>
-                <input type="date" id="input-birth" class="input" name="user_birth" placeholder="Birth Date">
+                <input type="date" id="input-birth" class="input" name="birthDate" placeholder="Birth Date">
                 <h3>Company:</h3>
-                <input type="text" id="input-company" class="input" name="user_company" placeholder="Company">
+                <input type="text" id="input-company" class="input" name="enterprise" placeholder="Company">
                 <h3>Comment (optional):</h3>
-                <textarea id="input-comment" class="comment" name="user_comment" placeholder="Comment"></textarea>
+                <textarea id="input-comment" class="comment" name="comment" placeholder="Comment"></textarea>
                 <div style="width: 100%; text-align: center;">
                     <input type='submit' id="submit-user" class="submit" name="user_submit" value="+"></input>
                 </div>
