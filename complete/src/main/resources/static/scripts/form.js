@@ -1,7 +1,7 @@
 /**
  * Function that add event on each input to detect change
  */
-function addFormEvent () {
+ function addFormEvent () {
     // Add event on change for each imput
     document.querySelectorAll(".input").forEach(e => {
         e.addEventListener('change', checkValueInput);

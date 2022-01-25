@@ -51,6 +51,15 @@ p {
     margin: 50px auto 0 auto;
 }
 
+.big-form-box {
+    width: 1400px;
+    height: fit-content;
+    background-color: #1B2E28;
+    border-radius: 40px;
+    padding: 40px;
+    margin: 50px auto 0 auto;
+}
+
 .input {
     width: 400px;
     height:50px;
@@ -154,9 +163,9 @@ textarea {
 }
 
 
-/****************************************************** Guest *********************************************/
+/****************************************************** participant *********************************************/
 
-.row-guest {
+.row-participant {
     background-color: none;
     width: 100%;
     height: 25px;
@@ -164,14 +173,14 @@ textarea {
     display: flex;
 }
 
-.row-guest-contain {
+.row-participant-contain {
     background-color: #1C4A47;
     height: 100%;
-    width: calc(100% - 25px);
+    width: calc(100% - 50px);
     display: flex;
 }
 
-.row-guest-delete {
+.row-participant-delete {
     background-color: #1C4A47;
     color: #B1D2DB;
     height: 100%;
@@ -180,20 +189,42 @@ textarea {
     display: flex;
 }
 
-.row-guest-delete > p {
+.row-participant-delete > p {
     margin: auto;
 }
 
-.row-guest-delete:hover {
+.row-participant-delete:hover {
     cursor:pointer;
     background-color: red;
 }
 
-.row-guest-delete:focus {
+.row-participant-delete:focus {
     background-color: red;
 }
 
-.row-guest-text {
+.row-participant-edit {
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    height: 100%;
+    width: 25px;
+    transition: 0.25s;
+    display: flex;
+}
+
+.row-participant-edit > p {
+    margin: auto;
+}
+
+.row-participant-edit:hover {
+    cursor:pointer;
+    background-color: orange;
+}
+
+.row-participant-edit:focus {
+    background-color: orange;
+}
+
+.row-participant-text {
     display: flex;
     padding: 0 25px;
     color: #B1D2DB;
@@ -201,6 +232,6 @@ textarea {
     height: 25px;
 }
 
-.row-guest-text > p {
+.row-participant-text > p {
     margin: auto 0;
 }
