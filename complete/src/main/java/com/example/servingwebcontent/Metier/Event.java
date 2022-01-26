@@ -32,7 +32,7 @@ public class Event {
 
     @Column(name ="descrption")
     public String description; // Description of the event
-
+  
     @Embedded
     @AttributeOverrides({
     @AttributeOverride(name = "idz",column = @Column(name = "Id")),
@@ -49,23 +49,20 @@ public class Event {
 
     @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
-    
+  
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
     public Event(){} // For Hibernate
 
-    public Event(String title, String theme,        // For Java
-     String startingDate, int length, int nbMaxParticipant,
-      String description, Participant organizer, 
-      String type){
+    public Event(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, String type){
         this.title = title;
         this.description = description;
         this.theme = theme;
         this.startingDate = startingDate;
         this.length = length;
-        this.organizer = organizer;
+        // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
         this.id = Objects.hash(title,theme,description,type,startingDate);

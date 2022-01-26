@@ -1,6 +1,10 @@
 package com.example.servingwebcontent.Session;
 
 
+import java.util.List;
+
+import javax.servlet.http.Part;
+
 import com.example.servingwebcontent.Metier.Participant;
 import com.example.servingwebcontent.Service.ParticipantService;
 
@@ -23,7 +27,9 @@ public class GreetingController {
 
 	@GetMapping("/manageParticipant")
 	public String getUser(Model model) {
-		
+		ParticipantService service = new ParticipantService();
+		List<Participant> participants = service.getAllParticipant();
+		model.addAttribute("participants", participants);
 		return "manageParticipant";
 	}
 
@@ -34,10 +40,18 @@ public class GreetingController {
 
 	@PostMapping("/saveParticipant")
 	public String saveParticipant(@Validated Participant participant, BindingResult result, Model model) {
-		System.out.println(result);
 		participant.displayParticipant();
-		ParticipantService s = new ParticipantService();
-		int a = s.create(participant);
-		return"redirect:/listPersonne";
+		ParticipantService service = new ParticipantService();
+		long id = service.create(participant);
+		System.out.println(id);
+		return"redirect:/manageParticipant";
+	}
+
+	@GetMapping("/editParticipant")
+	public String editParticipant(@RequestParam(name="id", required=false, defaultValue = "0") long id, Model model) {
+		ParticipantService service = new ParticipantService();
+		Participant participant = service.getParticipantById(id);
+		model.addAttribute("participant", participant);
+		return "editParticipant";
 	}
 }

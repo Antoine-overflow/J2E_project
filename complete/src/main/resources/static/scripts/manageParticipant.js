@@ -1,28 +1,28 @@
-function editGuest(e){
+function editparticipant(e){
     // get id
     var id = e.currentTarget.parentNode.id.split('user_')[1];
     
     // go to the edit page
-    window.location.href = "/editGuest?id="+id;
+    window.location.href = "/editParticipant?id="+id;
 }
 
-function deleteGuest(e){
+function deleteparticipant(e){
     // get id
     var id = e.currentTarget.parentNode.id.split('user_')[1];
     
     // go to the edit page
-    window.location.href = "/deleteGuest?id="+id;
+    window.location.href = "/deleteParticipant?id="+id;
 }
 
-function addEventListenerManageGuest(){
+function addEventListenerManageparticipant(){
     // Add event listener to each edit button
-    document.querySelectorAll(".row-guest-edit").forEach(row => {
-        row.addEventListener('click' , editGuest);
+    document.querySelectorAll(".row-participant-edit").forEach(row => {
+        row.addEventListener('click' , editparticipant);
     })
 
     // Add event listener to each edit button
-    document.querySelectorAll(".row-guest-delete").forEach(row => {
-        row.addEventListener('click' , deleteGuest);
+    document.querySelectorAll(".row-participant-delete").forEach(row => {
+        row.addEventListener('click' , deleteparticipant);
     })
 }
 
@@ -30,30 +30,26 @@ function addEventListenerManageGuest(){
 function displayTableParticipant(){
 
     // get the div
-    var container = document.getElementById("manage-guest-container");
+    var container = document.getElementById("manage-participant-container");
 
-    // <div class="row-guest" id="user_1">
-    //     <div  class="row-guest-contain">
-    //         <div class="row-guest-text"><p>First Name</p></div>
-    //         <div class="row-guest-text"><p>Las Name</p></div>
-    //         <div class="row-guest-text"><p>Birth</p></div>
-    //         <div class="row-guest-text"><p>Company</p></div>
-    //         <div class="row-guest-text"><p>Email</p></div>
+    // <div class="row-participant" id="user_1">
+    //     <div  class="row-participant-contain">
+    //         <div class="row-participant-text"><p>First Name</p></div>
+    //         <div class="row-participant-text"><p>Las Name</p></div>
+    //         <div class="row-participant-text"><p>Birth</p></div>
+    //         <div class="row-participant-text"><p>Company</p></div>
+    //         <div class="row-participant-text"><p>Email</p></div>
     //     </div>
-    //     <div class="row-guest-edit">
+    //     <div class="row-participant-edit">
     //         <p>+</p>
     //     </div>
-    //     <div class="row-guest-delete">
+    //     <div class="row-participant-delete">
     //         <p>x</p>
     //     </div>
     // </div>
 
-    fetch('/').then(a => a.json()).then(a => {
-        console.log(a);
-    });
-
     // Add event listener on each row
-    addEventListenerManageGuest();
+    addEventListenerManageparticipant();
 }
 
 

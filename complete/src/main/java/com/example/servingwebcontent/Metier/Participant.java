@@ -4,18 +4,17 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 // @Embeddable
 @Table(name = "Participants")
 public class Participant {
 
+    @Column(name = "identifier")
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     public int participantID;
-
+  
     @Column(name ="firstName")
     public String firstName;
 
@@ -37,7 +36,7 @@ public class Participant {
     // Participant constructor
     public Participant(){} // For Hibernate
 
-    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate){ // For java
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate) { // For java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -48,7 +47,7 @@ public class Participant {
 
     // Participant getters
     public int getId(){
-        return this.participantID;
+        return this.participantId;
     }
 
     public String getFirstName(){
@@ -106,10 +105,12 @@ public class Participant {
 
     // Display detail of a participant
     public void displayParticipant(){
+        System.out.println("ID: " + this.ID);
         System.out.println("Participant first name " + this.firstName);
         System.out.println("Participant last name " + this.lastName);
         System.out.println("Participant email adress " + this.email);
         System.out.println("Participant birthdate " + this.birthDate);
         System.out.println("Participant enterprise " + this.enterprise);
+        System.out.println("Participant comment " + this.comment);
     }
 }

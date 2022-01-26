@@ -1,10 +1,35 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head> 
-    <title>Getting Started: Serving Web Content</title> 
+    <title>Edit Participant - PJEE</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/style.css"></style>
+    <script src="scripts/form.js"></script>
 </head>
 <body>
-    <p th:text="'Id: ' + ${id}" />
+    <div style="width: 100vw;height:100vh;display: flex;">
+        <div class="form-box">
+            <h1>Edit Participant</h1>
+            <p></p>
+            <form action="/saveParticipant" method="post">
+                <h3>First Name:</h3>
+                <input type="text" id="input-first-name" class="input" name="firstName" placeholder="First Name" th:value="${participant.firstName}">
+                <h3>Last Name:</h3>
+                <input type="text" id="input-last-name" class="input" name="lastName" placeholder="Last Name" th:value="${participant.lastName}">
+                <h3>Email:</h3>
+                <input type="email" id="input-mail" class="input" name="email" placeholder="Email" th:value="${participant.email}">
+                <h3>Birth date:</h3>
+                <input type="date" id="input-birth" class="input" name="birthDate" placeholder="Birth Date" th:value="${participant.birthDate}">
+                <h3>Company:</h3>
+                <input type="text" id="input-company" class="input" name="enterprise" placeholder="Company" th:value="${participant.enterprise}">
+                <h3>Comment (optional):</h3>
+                <textarea id="input-comment" class="comment" name="comment" placeholder="Comment" th:text="${participant.comment}"></textarea>
+                <div style="width: 100%; text-align: center;">
+                    <input type='submit' id="submit-user" class="submit" name="user_submit" value="+"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/createUser.js"></script>
 </body>
 </html>
