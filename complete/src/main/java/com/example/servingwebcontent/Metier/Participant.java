@@ -1,19 +1,16 @@
 package com.example.servingwebcontent.Metier;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
-@Embeddable
 @Table(name = "Participants")
 public class Participant {
 
+    @Column(name = "identifier")
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    @Column(name = "id")
-    private long id;
+    public long ID = 0;
 
     @Column(name ="first_name")
     public String firstName;
@@ -24,7 +21,6 @@ public class Participant {
     @Column(name ="email")
     public String email;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name ="birthDate")
     public String birthDate;
 
@@ -37,17 +33,28 @@ public class Participant {
     // Participant constructor
     public Participant(){} // For Hibernate
 
-    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate){ // For java
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate) { // For java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.enterprise = enterprise;
         this.birthDate = birthDate;
+        this.ID = Math.abs(Objects.hash(firstName, lastName, email, enterprise, birthDate));
+    }
+
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate, String comment) { // For java
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.enterprise = enterprise;
+        this.birthDate = birthDate;
+        this.comment = comment;
+        this.ID = Math.abs(Objects.hash(firstName, lastName, email, enterprise, birthDate));
     }
 
     // Participant getters
     public long getId(){
-        return this.id;
+        return this.ID;
     }
 
     public String getFirstName(){
@@ -75,6 +82,9 @@ public class Participant {
     }
 
     // Participant setters
+    public void setId(long id){
+        this.ID = id;
+    }
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
@@ -101,10 +111,12 @@ public class Participant {
 
     // Display detail of a participant
     public void displayParticipant(){
+        System.out.println("ID: " + this.ID);
         System.out.println("Participant first name " + this.firstName);
         System.out.println("Participant last name " + this.lastName);
         System.out.println("Participant email adress " + this.email);
         System.out.println("Participant birthdate " + this.birthDate);
         System.out.println("Participant enterprise " + this.enterprise);
+        System.out.println("Participant comment " + this.comment);
     }
 }
