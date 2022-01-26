@@ -13,14 +13,22 @@ public class ParticipantService {
     public ParticipantService() {
     }
 
-    public long create(String firstName, String lastName, String email, String birthDate,String enterprise) {
+    public int create(String firstName, String lastName, String email, String birthDate,String enterprise) {
         Participant participant = new Participant(firstName, lastName, email, enterprise, birthDate);
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(participant);
+        session.getTransaction().commit();
+        session.close();
+        return participant.getId();
+    }
+
+    public int create(Participant participant) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(participant);
         session.getTransaction().commit();
         session.close();
         return participant.getId();
-
     }
 }

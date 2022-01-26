@@ -2,6 +2,7 @@ package com.example.servingwebcontent.Session;
 
 
 import com.example.servingwebcontent.Metier.Participant;
+import com.example.servingwebcontent.Service.ParticipantService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,8 @@ public class GreetingController {
 	public String saveParticipant(@Validated Participant participant, BindingResult result, Model model) {
 		System.out.println(result);
 		participant.displayParticipant();
+		ParticipantService s = new ParticipantService();
+		int a = s.create(participant);
 		return"redirect:/listPersonne";
 	}
 }

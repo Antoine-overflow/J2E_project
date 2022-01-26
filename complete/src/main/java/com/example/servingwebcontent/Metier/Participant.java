@@ -1,30 +1,30 @@
 package com.example.servingwebcontent.Metier;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Embeddable
+// @Embeddable
 @Table(name = "Participants")
 public class Participant {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    public int participantID;
 
-    @Column(name ="first_name")
+    @Column(name ="firstName")
     public String firstName;
 
-    @Column(name ="last_name")
+    @Column(name ="lastName")
     public String lastName;
 
     @Column(name ="email")
     public String email;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name ="birthDate")
     public String birthDate;
 
@@ -43,11 +43,12 @@ public class Participant {
         this.email = email;
         this.enterprise = enterprise;
         this.birthDate = birthDate;
+        //this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
     }
 
     // Participant getters
-    public long getId(){
-        return this.id;
+    public int getId(){
+        return this.participantID;
     }
 
     public String getFirstName(){
@@ -75,6 +76,10 @@ public class Participant {
     }
 
     // Participant setters
+    public void setId(int participantID){
+        this.participantID=participantID;
+    }
+
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }

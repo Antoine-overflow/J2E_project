@@ -2,16 +2,17 @@ package com.example.servingwebcontent.Metier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Events")
+import org.hibernate.annotations.GenericGenerator;
+
+//@Entity
+//@Table(name = "Events")
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
 
     @Column(name ="title")
@@ -20,13 +21,13 @@ public class Event {
     @Column(name ="theme")
     public String theme; // Theme of the event
 
-    @Column(name ="Starting date")
+    @Column(name ="Starting_date")
     public String startingDate; // Starting date of the event
 
-    @Column(name ="Day duration")
+    @Column(name ="Day_duration")
     public int length; // Length in days of the event
 
-    @Column(name ="Max number of participants")
+    @Column(name ="Max_number_of_participants")
     public int nbMaxParticipant;   // Number max of participants for the event 
 
     @Column(name ="descrption")
@@ -34,6 +35,7 @@ public class Event {
 
     @Embedded
     @AttributeOverrides({
+    @AttributeOverride(name = "idz",column = @Column(name = "Id")),
     @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
     @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
     @AttributeOverride(name = "email",column = @Column(name = "email")),
@@ -45,11 +47,10 @@ public class Event {
     @Column(name ="type")
     public String type; //The type of the event
 
-    @Column(name ="Number of participant")
+    @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
-
-    @OneToMany
-    @JoinColumn(name = "Participant_Id")
+    
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
@@ -67,6 +68,7 @@ public class Event {
         this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
+        this.id = Objects.hash(title,theme,description,type,startingDate);
         this.participants = new ArrayList<Participant>();
         participants.add(organizer);
     }
