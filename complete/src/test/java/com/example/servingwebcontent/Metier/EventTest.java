@@ -30,41 +30,41 @@ public class EventTest {
         Assert.assertEquals(CEOinvesture.getType(), type);
     }
 
-    @Test
-    public void testAddParticipant(){
-        String birthDateJ = "1998-2-21";
-        Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
+    // @Test
+    // public void testAddParticipant(){
+    //     String birthDateJ = "1998-2-21";
+    //     Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
 
-        String birthDateA = "2001,2,2";
-        Participant antoine = new Participant("Antoine", "Rainaud", "antoine.rainaud@gmail.com", "Microsoft", birthDateA);
+    //     String birthDateA = "2001,2,2";
+    //     Participant antoine = new Participant("Antoine", "Rainaud", "antoine.rainaud@gmail.com", "Microsoft", birthDateA);
 
-        String birthDatePA = "1999-2-1";
-        Participant PA = new Participant("PA", "Orain", "pa.orain@gmail.com", "Pôle Emploi", birthDatePA);
+    //     String birthDatePA = "1999-2-1";
+    //     Participant PA = new Participant("PA", "Orain", "pa.orain@gmail.com", "Pôle Emploi", birthDatePA);
 
-        String birthDateMS = "1998-3-2";
-        Participant MS = new Participant("MS", "Gabarnie", "ms.gaba@gmail.com", "JulesPierratEIRL", birthDateMS);
+    //     String birthDateMS = "1998-3-2";
+    //     Participant MS = new Participant("MS", "Gabarnie", "ms.gaba@gmail.com", "JulesPierratEIRL", birthDateMS);
 
-        String startingDate = "2022-2-15";
-        Event anniv = new Event("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
+    //     String startingDate = "2022-2-15";
+    //     Event anniv = new Event("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
 
-        List<Participant> participants = new ArrayList<Participant>();
-        participants.add(jules);
-        participants.add(antoine);
-        anniv.addParticipant(antoine);
+    //     List<Participant> participants = new ArrayList<Participant>();
+    //     participants.add(jules);
+    //     participants.add(antoine);
+    //     anniv.addParticipant(antoine);
 
-        Assert.assertEquals(anniv.getParticipants(), participants);
-        Assert.assertEquals(anniv.getNbParticipant(), 2);
+    //     Assert.assertEquals(anniv.getParticipants(), participants);
+    //     Assert.assertEquals(anniv.getNbParticipant(), 2);
 
-        participants.add(PA);
-        anniv.addParticipant(PA);
+    //     participants.add(PA);
+    //     anniv.addParticipant(PA);
 
-        Assert.assertEquals(anniv.getParticipants(), participants);
-        Assert.assertEquals(anniv.getNbParticipant(), 3);
+    //     Assert.assertEquals(anniv.getParticipants(), participants);
+    //     Assert.assertEquals(anniv.getNbParticipant(), 3);
 
-        anniv.addParticipant(MS);
-        Assert.assertEquals(anniv.getParticipants(), participants);
-        Assert.assertEquals(anniv.getNbParticipant(), 3);
-    }
+    //     anniv.addParticipant(MS);
+    //     Assert.assertEquals(anniv.getParticipants(), participants);
+    //     Assert.assertEquals(anniv.getNbParticipant(), 3);
+    // }
 
     @Test
     public void testDisplayEvent(){

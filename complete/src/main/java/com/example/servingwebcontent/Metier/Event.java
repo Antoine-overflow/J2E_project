@@ -10,9 +10,8 @@ import javax.persistence.*;
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private long id = 0;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -32,14 +31,8 @@ public class Event {
     @Column(name ="descrption")
     public String description; // Description of the event
 
-    @Embedded
-    @AttributeOverrides({
-    @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
-    @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
-    @AttributeOverride(name = "email",column = @Column(name = "email")),
-    @AttributeOverride(name = "enterprise",column = @Column(name = "enterprise")),
-    @AttributeOverride(name = "comment",column = @Column(name = "comment")),
-    @AttributeOverride(name = "birthDate",column = @Column(name = "birthdate")) })
+    @OneToMany
+    @JoinColumn(name="id")
     public Participant organizer; // The organizer of the event
 
     @Column(name ="type")
@@ -49,26 +42,23 @@ public class Event {
     private int nbParticipant = 1; // The number of participant for the event
 
     @OneToMany
-    @JoinColumn(name = "Participant_Id")
-    private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
+    @JoinColumn(name = "id")
+    private List<Participant> participants = new ArrayList<>(); // The list of participant for the event
 
     // Event constructor 
     public Event(){} // For Hibernate
 
-    public Event(String title, String theme,        // For Java
-     String startingDate, int length, int nbMaxParticipant,
-      String description, Participant organizer, 
-      String type){
+    public Event(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, String type){
         this.title = title;
         this.description = description;
         this.theme = theme;
         this.startingDate = startingDate;
         this.length = length;
-        this.organizer = organizer;
+        // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
-        this.participants = new ArrayList<Participant>();
-        participants.add(organizer);
+        // this.participants = new ArrayList<Participant>();
+        // participants.add(organizer);
     }
 
     // Event getters

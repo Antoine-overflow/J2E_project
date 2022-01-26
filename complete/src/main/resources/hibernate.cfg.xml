@@ -12,6 +12,6 @@
             <property name="hibernate.hbm2ddl.auto">create</property>
             <property name="hibernate.show_sql">true</property>
             <mapping class="com.example.servingwebcontent.Metier.Participant"/>
-            <mapping class="com.example.servingwebcontent.Metier.Event"/>
+            <!-- <mapping class="com.example.servingwebcontent.Metier.Event"/> -->
         </session-factory>
     </hibernate-configuration>

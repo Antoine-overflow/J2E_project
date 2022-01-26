@@ -30,7 +30,7 @@ public class ParticipantService {
     public long create (Participant participant) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.persist(participant);
+        session.saveOrUpdate(participant);
         session.getTransaction().commit();
         session.close();
         return participant.getId();
