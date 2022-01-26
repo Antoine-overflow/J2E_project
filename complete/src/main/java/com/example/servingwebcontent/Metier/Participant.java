@@ -5,17 +5,20 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
+// @Embeddable
 @Table(name = "Participants")
 public class Participant {
 
     @Column(name = "identifier")
     @Id
-    public long ID = 0;
-
-    @Column(name ="first_name")
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    public int participantID;
+  
+    @Column(name ="firstName")
     public String firstName;
 
-    @Column(name ="last_name")
+    @Column(name ="lastName")
     public String lastName;
 
     @Column(name ="email")
@@ -39,22 +42,12 @@ public class Participant {
         this.email = email;
         this.enterprise = enterprise;
         this.birthDate = birthDate;
-        this.ID = Math.abs(Objects.hash(firstName, lastName, email, enterprise, birthDate));
-    }
-
-    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate, String comment) { // For java
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.enterprise = enterprise;
-        this.birthDate = birthDate;
-        this.comment = comment;
-        this.ID = Math.abs(Objects.hash(firstName, lastName, email, enterprise, birthDate));
+        //this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
     }
 
     // Participant getters
-    public long getId(){
-        return this.ID;
+    public int getId(){
+        return this.participantId;
     }
 
     public String getFirstName(){
@@ -82,9 +75,10 @@ public class Participant {
     }
 
     // Participant setters
-    public void setId(long id){
-        this.ID = id;
+    public void setId(int participantID){
+        this.participantID=participantID;
     }
+
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }

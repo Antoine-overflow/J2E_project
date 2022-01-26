@@ -2,16 +2,18 @@ package com.example.servingwebcontent.Metier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Events")
+import org.hibernate.annotations.GenericGenerator;
+
+//@Entity
+//@Table(name = "Events")
 public class Event {
 
     @Id
-    @Column(name = "id")
-    private long id = 0;
+    private long id;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -19,31 +21,37 @@ public class Event {
     @Column(name ="theme")
     public String theme; // Theme of the event
 
-    @Column(name ="Starting date")
+    @Column(name ="Starting_date")
     public String startingDate; // Starting date of the event
 
-    @Column(name ="Day duration")
+    @Column(name ="Day_duration")
     public int length; // Length in days of the event
 
-    @Column(name ="Max number of participants")
+    @Column(name ="Max_number_of_participants")
     public int nbMaxParticipant;   // Number max of participants for the event 
 
     @Column(name ="descrption")
     public String description; // Description of the event
-
-    @OneToMany
-    @JoinColumn(name="id")
+  
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "idz",column = @Column(name = "Id")),
+    @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
+    @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
+    @AttributeOverride(name = "email",column = @Column(name = "email")),
+    @AttributeOverride(name = "enterprise",column = @Column(name = "enterprise")),
+    @AttributeOverride(name = "comment",column = @Column(name = "comment")),
+    @AttributeOverride(name = "birthDate",column = @Column(name = "birthdate")) })
     public Participant organizer; // The organizer of the event
 
     @Column(name ="type")
     public String type; //The type of the event
 
-    @Column(name ="Number of participant")
+    @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
-
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<Participant> participants = new ArrayList<>(); // The list of participant for the event
+  
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
     public Event(){} // For Hibernate
@@ -57,8 +65,9 @@ public class Event {
         // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
-        // this.participants = new ArrayList<Participant>();
-        // participants.add(organizer);
+        this.id = Objects.hash(title,theme,description,type,startingDate);
+        this.participants = new ArrayList<Participant>();
+        participants.add(organizer);
     }
 
     // Event getters
