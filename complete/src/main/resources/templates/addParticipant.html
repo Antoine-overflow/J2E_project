@@ -10,6 +10,9 @@
     <div style="width: 100vw;height:100vh;display: flex;">
         <div class="form-box">
             <h1>Create User</h1>
+            <button id="button-add-participant" class="button" onclick="window.location.href = '/';">Home</button>
+            <button id="button-add-participant" class="button" onclick="window.location.href = '/manageParticipant';">Manage Participant</button>
+            <div class="separator"></div>
             <form action="/saveParticipant" method="post">
                 <h3>First Name:</h3>
                 <input type="text" id="input-first-name" class="input" name="firstName" placeholder="First Name">

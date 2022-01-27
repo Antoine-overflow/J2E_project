@@ -10,6 +10,9 @@
     <div style="width: 100vw;height:100vh;display: flex;">
         <div class="form-box">
             <h1>Edit Participant</h1>
+            <button id="button-add-participant" class="button" onclick="window.location.href = '/';">Home</button>
+            <button id="button-add-participant" class="button" onclick="window.location.href = '/manageParticipant';">Manage Participant</button>
+            <div class="separator"></div>
             <p></p>
             <form action="/modifyParticipant" method="post">
                 <input type="number" name="id" th:value="${participant.id}" style="display:none;">
