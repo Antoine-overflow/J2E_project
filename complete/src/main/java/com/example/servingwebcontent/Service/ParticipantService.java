@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ParticipantService {
     // @Autowired
-    private final SessionFactory sf = HibernateUtils.createSessionFactory(); //java.lang.ExceptionInInitializerError
+    private final SessionFactory sf = HibernateUtils.createSessionFactory(); //java.lang.ExceptionInInitializerError -> NullPointerExeption in createSessionFactory()
 
     public ParticipantService() {
     }

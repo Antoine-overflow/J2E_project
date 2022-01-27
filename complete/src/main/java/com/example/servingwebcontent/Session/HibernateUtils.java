@@ -28,9 +28,8 @@ public class HibernateUtils {
                     .applySettings(configuration.getProperties()).build();
              
             // builds a session factory from the service registry
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);           
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);   //Issue here   Test null everywhere
         }
-         
         return sessionFactory;
     }
 

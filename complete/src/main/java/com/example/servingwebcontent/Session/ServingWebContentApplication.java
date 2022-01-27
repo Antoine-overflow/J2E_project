@@ -18,7 +18,7 @@ public class ServingWebContentApplication {
 
         ParticipantService participantService = new ParticipantService();
         
-        long a = participantService.create("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
+        long a1 = participantService.create("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
         long b = participantService.create("Jules", "Pierrat", "jules@ensg.eu","1998-2-21","Google");
 
         EventService eventService = new EventService();
@@ -26,5 +26,4 @@ public class ServingWebContentApplication {
         Participant antoine = new Participant("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
         long b2 = eventService.create("birthday","party","2022-02-01",1,20,"Antoine and PA birthday",antoine,"party");
     }
-
 }
