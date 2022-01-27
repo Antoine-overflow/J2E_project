@@ -1,6 +1,6 @@
 function editparticipant(e){
     // get id
-    var id = e.currentTarget.parentNode.id.split('user_')[1];
+    var id = e.currentTarget.parentNode.id;
     
     // go to the edit page
     window.location.href = "/editParticipant?id="+id;
@@ -8,7 +8,7 @@ function editparticipant(e){
 
 function deleteparticipant(e){
     // get id
-    var id = e.currentTarget.parentNode.id.split('user_')[1];
+    var id = e.currentTarget.parentNode.id;
     
     // go to the edit page
     window.location.href = "/deleteParticipant?id="+id;

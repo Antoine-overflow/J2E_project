@@ -48,10 +48,25 @@ public class GreetingController {
 	}
 
 	@GetMapping("/editParticipant")
-	public String editParticipant(@RequestParam(name="id", required=false, defaultValue = "0") long id, Model model) {
+	public String editParticipant(@RequestParam(name="id", required = true, defaultValue = "0") int id, Model model) {
 		ParticipantService service = new ParticipantService();
 		Participant participant = service.getParticipantById(id);
 		model.addAttribute("participant", participant);
 		return "editParticipant";
+	}
+
+	@PostMapping("/modifyParticipant")
+	public String modifyParticipant(@Validated Participant participant, BindingResult result, Model model) {
+		participant.displayParticipant();
+		ParticipantService service = new ParticipantService();
+		long r = service.update(participant);
+		return"redirect:/manageParticipant";
+	}
+
+	@GetMapping("/deleteParticipant")
+	public String deleteParticipant(@RequestParam(name="id", required = true, defaultValue = "0") int id, Model model) {
+		ParticipantService service = new ParticipantService();
+		service.deleteParticipant(id);
+		return "redirect:/manageParticipant";
 	}
 }

@@ -1,7 +1,5 @@
 package com.example.servingwebcontent.Service;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.servingwebcontent.Metier.Participant;
@@ -9,6 +7,7 @@ import com.example.servingwebcontent.Session.HibernateUtils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 public class ParticipantService {
     private final SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
@@ -36,22 +35,42 @@ public class ParticipantService {
     }
 
     public List<Participant> getAllParticipant () {
-        List<Participant> liste = new ArrayList<>();
-        Participant p1 = new Participant("Jules", "Pierrat", "jules.pierrat@ensg.eu", "Jules Pierrat EIRL", "1998-02-21");
-        Participant p2 = new Participant("Julie", "Kaltenbacher", "julie.kaltenbacher@gmail.com", "Kine", "2000-03-12");
-        Participant p3 = new Participant("Marie-Sophie", "Gabagnou", "marie-sophie.gabagnou@hotmail.fr", "Knorr", "1998-02-18");
-        Participant p4 = new Participant("Ines", "Mebarki", "ines.mebarki@outlook.fr", "Crédit Lyonnais", "1998-06-30");
-
-        liste.add(p1);
-        liste.add(p2);
-        liste.add(p3);
-        liste.add(p4);
-
+        Session session = sessionFactory.openSession();
+        session.getTransaction().begin();
+        String sql = "SELECT e FROM "+Participant.class.getName()+" e";
+        Query<Participant> query = session.createQuery(sql);
+        List<Participant> liste = query.getResultList();
+        session.close();
         return liste;
     }
 
-    public Participant getParticipantById(long id){
-        Participant p = new Participant("Jules", "Pierrat", "jules.pierrat@ensg.eu", "Jules Pierrat EIRL", "1998-02-21");
+    public Participant getParticipantById(int id){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sql = "SELECT e FROM "+Participant.class.getName()+" e WHERE e.id="+id;
+        Query<Participant> query = session.createQuery(sql);
+        Participant p = query.getResultList().get(0);
         return p;
+    }
+
+    public Boolean deleteParticipant(int id){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sql = "DELETE Participant WHERE id= :ID";
+        Query query = session.createQuery(sql);
+        query.setParameter("ID", id);
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+    public int update(Participant participant){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(participant);
+        session.getTransaction().commit();
+        session.close();
+        return participant.getId();
     }
 }

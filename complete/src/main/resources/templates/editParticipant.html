@@ -11,7 +11,8 @@
         <div class="form-box">
             <h1>Edit Participant</h1>
             <p></p>
-            <form action="/saveParticipant" method="post">
+            <form action="/modifyParticipant" method="post">
+                <input type="number" name="id" th:value="${participant.id}" style="display:none;">
                 <h3>First Name:</h3>
                 <input type="text" id="input-first-name" class="input" name="firstName" placeholder="First Name" th:value="${participant.firstName}">
                 <h3>Last Name:</h3>

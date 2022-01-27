@@ -17,7 +17,7 @@ public class ServingWebContentApplication {
         //EventService eventService = new EventService();
 
         // Participant antoine = new Participant("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
-        long a = participantService.create("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
+        //long a = participantService.create("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
 
         // ParticipantService participantService2 = new ParticipantService();
         // long b = participantService2.create("Jules", "Pierrat", "jules@ensg.eu","1998-2-21","Google");

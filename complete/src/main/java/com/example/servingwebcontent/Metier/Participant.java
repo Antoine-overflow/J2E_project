@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "Participants")
 public class Participant {
 
-    @Column(name = "identifier")
+    @Column(name = "id")
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -44,7 +44,38 @@ public class Participant {
         this.email = email;
         this.enterprise = enterprise;
         this.birthDate = birthDate;
-        //this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
+        // this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
+    }
+
+    public Participant(String firstName, String lastName, String email, String enterprise, String birthDate, String comment) { // For java
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.enterprise = enterprise;
+        this.birthDate = birthDate;
+        this.comment = comment;
+        // this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
+    }
+
+    public Participant(int id, String firstName, String lastName, String email, String enterprise, String birthDate) { // For java
+        this.participantID = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.enterprise = enterprise;
+        this.birthDate = birthDate;
+        // this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
+    }
+
+    public Participant(int id, String firstName, String lastName, String email, String enterprise, String birthDate, String comment) { // For java
+        this.participantID = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.enterprise = enterprise;
+        this.birthDate = birthDate;
+        this.comment = comment;
+        // this.participantID = Objects.hash(firstName, lastName, email, enterprise, birthDate);
     }
 
     // Participant getters
