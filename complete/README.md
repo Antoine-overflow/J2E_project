@@ -7,7 +7,7 @@ In ordre to lauch and use our application you have to follow the following instr
 To install the application we will use git so you need to have git on your computer. If you don't have git you can follow the tutorial here : https://git-scm.com/downloads 
 depending on your OS.
 
-This project use maven as a tool build so you must have maven on your computer. If you don't gave maven you can find here : https://maven.apache.org/users/index.html a tutorial
+This project use maven as a tool build so you must have maven on your computer. If you don't have maven you can find here : https://maven.apache.org/users/index.html a tutorial
 for download and get started with maven.
 
 For the database, we use PostgreSQL. We suppose that you already have PostgreSQL but if it is not the case you can download PostgreSQL here : https://www.postgresql.org/download/.
