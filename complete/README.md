@@ -1,4 +1,4 @@
-This is the READme for the J2E, Spring and Hibernate project :
+# This is the READme for the J2E, Spring and Hibernate project :
 
 In ordre to lauch and use our application you have to follow the following instructions.
 
