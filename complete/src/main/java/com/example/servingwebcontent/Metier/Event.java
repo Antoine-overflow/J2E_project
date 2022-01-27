@@ -8,12 +8,14 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
-//@Entity
-//@Table(name = "Events")
+@Entity
+@Table(name = "Events")
 public class Event {
 
     @Id
-    private long id;
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id_event;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -33,15 +35,8 @@ public class Event {
     @Column(name ="descrption")
     public String description; // Description of the event
   
-    @Embedded
-    @AttributeOverrides({
-    @AttributeOverride(name = "idz",column = @Column(name = "Id")),
-    @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
-    @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
-    @AttributeOverride(name = "email",column = @Column(name = "email")),
-    @AttributeOverride(name = "enterprise",column = @Column(name = "enterprise")),
-    @AttributeOverride(name = "comment",column = @Column(name = "comment")),
-    @AttributeOverride(name = "birthDate",column = @Column(name = "birthdate")) })
+    @OneToOne 
+    @JoinColumn( name="id" )
     public Participant organizer; // The organizer of the event
 
     @Column(name ="type")
@@ -50,7 +45,12 @@ public class Event {
     @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
   
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+        name="EVENT_USER",
+        joinColumns = @JoinColumn(name="id_event"),
+        inverseJoinColumns = @JoinColumn(name="id_participant") 
+    )
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
@@ -65,14 +65,14 @@ public class Event {
         // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
-        this.id = Objects.hash(title,theme,description,type,startingDate);
+        this.id_event = Objects.hash(title,theme,description,type,startingDate);
         this.participants = new ArrayList<Participant>();
         participants.add(organizer);
     }
 
     // Event getters
     public long getId(){
-        return this.id;
+        return this.id_event;
     }
     
     public String getTitle(){
