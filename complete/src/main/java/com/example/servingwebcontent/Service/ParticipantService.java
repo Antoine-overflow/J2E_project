@@ -9,25 +9,27 @@ import com.example.servingwebcontent.Session.HibernateUtils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ParticipantService {
-    private final SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+    // @Autowired
+    private final SessionFactory sf = HibernateUtils.createSessionFactory(); //java.lang.ExceptionInInitializerError
 
     public ParticipantService() {
     }
 
     public int create(String firstName, String lastName, String email, String birthDate,String enterprise) {
         Participant participant = new Participant(firstName, lastName, email, enterprise, birthDate);
-        Session session = sessionFactory.openSession();
+        Session session = sf.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(participant);
+        session.persist(participant);
         session.getTransaction().commit();
         session.close();
         return participant.getId();
     }
 
     public long create (Participant participant) {
-        Session session = sessionFactory.openSession();
+        Session session = sf.openSession();
         session.beginTransaction();
         session.saveOrUpdate(participant);
         session.getTransaction().commit();

@@ -1,5 +1,8 @@
 package com.example.servingwebcontent.Session;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+
 import com.example.servingwebcontent.Metier.Participant;
 import com.example.servingwebcontent.Service.EventService;
 import com.example.servingwebcontent.Service.ParticipantService;
@@ -14,14 +17,14 @@ public class ServingWebContentApplication {
         SpringApplication.run(ServingWebContentApplication.class, args);
 
         ParticipantService participantService = new ParticipantService();
-        //EventService eventService = new EventService();
-
-        // Participant antoine = new Participant("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
+        
         long a = participantService.create("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
+        long b = participantService.create("Jules", "Pierrat", "jules@ensg.eu","1998-2-21","Google");
 
-        // ParticipantService participantService2 = new ParticipantService();
-        // long b = participantService2.create("Jules", "Pierrat", "jules@ensg.eu","1998-2-21","Google");
-        //long b = eventService.create("birthday","party","2022-02-01",1,20,"Antoine and PA birthday",antoine,"party");
+        EventService eventService = new EventService();
+
+        Participant antoine = new Participant("Antoine","Rainaud","antoine@ensg.eu","2001-2-2","Microsoft");
+        long b2 = eventService.create("birthday","party","2022-02-01",1,20,"Antoine and PA birthday",antoine,"party");
     }
 
 }

@@ -1,13 +1,17 @@
 package com.example.servingwebcontent.Metier;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.MetaValue;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-// @Embeddable
+@Embeddable
 @Table(name = "Participants")
 public class Participant {
 
@@ -15,6 +19,7 @@ public class Participant {
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")
+    @Autowired
     public int participantID;
   
     @Column(name ="firstName")
@@ -34,6 +39,12 @@ public class Participant {
 
     @Column(name ="comment")
     public String comment = "a";
+
+    // @ManyToOne
+    // @JoinColumn(name = "eventID")
+    // public Event event;
+    // @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    // public List<Event> events = new ArrayList<Event>();
 
     // Participant constructor
     public Participant(){} // For Hibernate
@@ -77,6 +88,7 @@ public class Participant {
     }
 
     // Participant setters
+    // @Autowired
     public void setId(int participantID){
         this.participantID=participantID;
     }

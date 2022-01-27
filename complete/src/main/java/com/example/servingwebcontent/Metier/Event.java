@@ -7,13 +7,18 @@ import java.util.Objects;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 
-//@Entity
-//@Table(name = "Events")
+@Entity
+@Table(name = "Events")
 public class Event {
 
+    @Column(name = "identifier")
     @Id
-    private long id;
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    // @Autowired
+    private long eventID;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -35,7 +40,7 @@ public class Event {
   
     @Embedded
     @AttributeOverrides({
-    @AttributeOverride(name = "idz",column = @Column(name = "Id")),
+    @AttributeOverride(name = "participantID",column = @Column(name = "Id")),
     @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
     @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
     @AttributeOverride(name = "email",column = @Column(name = "email")),
@@ -50,7 +55,7 @@ public class Event {
     @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
   
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event")
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
@@ -65,14 +70,14 @@ public class Event {
         // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
-        this.id = Objects.hash(title,theme,description,type,startingDate);
+        this.eventID = Objects.hash(title,theme,description,type,startingDate);
         this.participants = new ArrayList<Participant>();
         participants.add(organizer);
     }
 
     // Event getters
     public long getId(){
-        return this.id;
+        return this.eventID;
     }
     
     public String getTitle(){
@@ -116,6 +121,11 @@ public class Event {
     }
     
     // Event setters
+    // @Autowired
+    public void setId(long eventID){
+        this.eventID=eventID;
+    }
+
     public void setTitle(String title){
         this.title = title;
     }
@@ -149,6 +159,7 @@ public class Event {
     }
 
     // Add a participant to an event
+    @Autowired
     public void addParticipant(Participant participant){
         //First we check if we can accept the participant
         if (this.nbMaxParticipant<=this.nbParticipant){
