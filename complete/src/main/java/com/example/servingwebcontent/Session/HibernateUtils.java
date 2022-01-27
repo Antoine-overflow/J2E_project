@@ -26,12 +26,4 @@ public class HibernateUtils {
         }
         return null;
     }
-
-    public void insert(Participant participant) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.persist(participant);
-        session.getTransaction().commit();
-        session.close();
-    }
 }

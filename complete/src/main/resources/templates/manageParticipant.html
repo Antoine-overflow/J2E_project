@@ -1,16 +1,35 @@
 <!DOCTYPE HTML>
 <html>
 <head> 
-    <title>Manage Guest - PJEE</title> 
+    <title>Manage participant - PJEE</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles/style.css"></style>
 </head>
 <body>
     <div style="width: 100vw;height:100vh;display: flex;">
-        <div id="manage-guest-container" class="big-form-box">
-            <h1>Manage Guest :</h1>
-            <button id="button-add-guest" class="button" onclick="window.location.href = '/addParticipant';">Add Participant</button>
+        <div id="manage-participant-container" class="big-form-box">
+            <h1>Manage participant :</h1>
+            <button id="button-add-participant" class="button" onclick="window.location.href = '/addParticipant';">Add Participant</button>
             <div class="separator"></div>
+
+
+            <div th:each="participant: ${participants}" class="row-participant" th:id="${participant.id}">
+                <div  class="row-participant-contain">
+                    <div class="row-participant-text"><p th:text="${participant.firstName}"></p></div>
+                    <div class="row-participant-text"><p th:text="${participant.lastName}"></p></div>
+                    <div class="row-participant-text"><p th:text="${participant.birthDate}"></p></div>
+                    <div class="row-participant-text"><p th:text="${participant.enterprise}"></p></div>
+                    <div class="row-participant-text"><p th:text="${participant.email}"></p></div>
+                </div>
+                <div class="row-participant-edit">
+                    <p>+</p>
+                </div>
+                <div class="row-participant-delete">
+                    <p>x</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
     <script src="scripts/manageParticipant.js"></script>

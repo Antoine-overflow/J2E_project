@@ -9,9 +9,9 @@
 
             <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
-            <property name="hibernate.hbm2ddl.auto">create</property>
+            <property name="hibernate.hbm2ddl.auto">update</property>
             <property name="hibernate.show_sql">true</property>
-            <mapping class="com.example.servingwebcontent.Participant"/>
-            <mapping class="com.example.servingwebcontent.Event"/>
+            <mapping class="com.example.servingwebcontent.Metier.Participant"/>
+            <mapping class="com.example.servingwebcontent.Metier.Event"/>
         </session-factory>
     </hibernate-configuration>

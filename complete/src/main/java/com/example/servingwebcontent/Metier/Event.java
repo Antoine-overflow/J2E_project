@@ -2,17 +2,20 @@ package com.example.servingwebcontent.Metier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "Events")
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id_event;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -20,60 +23,56 @@ public class Event {
     @Column(name ="theme")
     public String theme; // Theme of the event
 
-    @Column(name ="Starting date")
+    @Column(name ="Starting_date")
     public String startingDate; // Starting date of the event
 
-    @Column(name ="Day duration")
+    @Column(name ="Day_duration")
     public int length; // Length in days of the event
 
-    @Column(name ="Max number of participants")
+    @Column(name ="Max_number_of_participants")
     public int nbMaxParticipant;   // Number max of participants for the event 
 
     @Column(name ="descrption")
     public String description; // Description of the event
-
-    @Embedded
-    @AttributeOverrides({
-    @AttributeOverride(name = "firstName",column = @Column(name = "first_name")),
-    @AttributeOverride(name = "lastName",column = @Column(name = "last_name")),
-    @AttributeOverride(name = "email",column = @Column(name = "email")),
-    @AttributeOverride(name = "enterprise",column = @Column(name = "enterprise")),
-    @AttributeOverride(name = "comment",column = @Column(name = "comment")),
-    @AttributeOverride(name = "birthDate",column = @Column(name = "birthdate")) })
+  
+    @OneToOne 
+    @JoinColumn( name="id" )
     public Participant organizer; // The organizer of the event
 
     @Column(name ="type")
     public String type; //The type of the event
 
-    @Column(name ="Number of participant")
+    @Column(name ="Number_of_participant")
     private int nbParticipant = 1; // The number of participant for the event
-
-    @OneToMany
-    @JoinColumn(name = "Participant_Id")
+  
+    @ManyToMany
+    @JoinTable(
+        name="EVENT_USER",
+        joinColumns = @JoinColumn(name="id_event"),
+        inverseJoinColumns = @JoinColumn(name="id_participant") 
+    )
     private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
     public Event(){} // For Hibernate
 
-    public Event(String title, String theme,        // For Java
-     String startingDate, int length, int nbMaxParticipant,
-      String description, Participant organizer, 
-      String type){
+    public Event(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, String type){
         this.title = title;
         this.description = description;
         this.theme = theme;
         this.startingDate = startingDate;
         this.length = length;
-        this.organizer = organizer;
+        // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
+        this.id_event = Objects.hash(title,theme,description,type,startingDate);
         this.participants = new ArrayList<Participant>();
         participants.add(organizer);
     }
 
     // Event getters
     public long getId(){
-        return this.id;
+        return this.id_event;
     }
     
     public String getTitle(){
