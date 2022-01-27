@@ -15,15 +15,15 @@ Once downloaded you can follow the official getting started tutorial if you are 
 
 2 - DATABASE CONFIGURATION
 
-In this part we suppose you have PostgreSQL on your computer and that you know how to create a database and parametrize the user and password for the created database. You know
-have the choice for your database. You can do option A and follow our instructions (recommended if you are beginner with PostgreSQL) or option B and create the way you want 
+In this part we suppose you have PostgreSQL on your computer and that you know how to create a database and parametrize the user and password for the created database. You now
+have the choice for your database. You can do option A and follow our instructions (recommended if you are a beginner with PostgreSQL) or option B and create the way you want 
 your database (not recommded if you begin with PostgreSQL).
 
   A - Follow our instructions
     (When words are between '' you just have to write what's inside the quotes)
     
   First step : create a user named 'test'
-  Second step : create a databased 'test' owned by the user 'test'
+  Second step : create a database 'test' owned by the user 'test'
   Third step : create a password 'test' for your database
   
   B - Create the way you want
@@ -33,8 +33,7 @@ your database (not recommded if you begin with PostgreSQL).
   ```bash
   git clone https://github.com/Antoine-overflow/J2E_project.git
   ```
-  Then, open the project with your favourite IDE and open the file hibernate.cfg.xml in the src/main/resources folder. You can now modifiy and adapt lines 6,7 and 8 of the file
-  for making the connection between your created database and our database.
+  Then, open the project with your favourite IDE and open the file hibernate.cfg.xml in the complete/src/main/resources folder. You can now modifiy and adapt lines 6,7 and 8 of   the file for making the connection between your created database and our application.
 
 3 - LAUNCH 
 
@@ -42,6 +41,11 @@ Open your terminal and enter the following code :
 ```bash
 git clone https://github.com/Antoine-overflow/J2E_project.git
 cd J2E_project/complete
+./mvnw spring-boot:run
+```
+
+If you already cloned the repository by doing option B in the 2nd part just open a terminal in the J2E_project/complete folder and enter the following line : 
+```bash
 ./mvnw spring-boot:run
 ```
 
