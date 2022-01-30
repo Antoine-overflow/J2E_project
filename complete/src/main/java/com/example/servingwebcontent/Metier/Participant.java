@@ -12,7 +12,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "Participants")
 public class Participant {
 
-    @Column(name = "id")
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")

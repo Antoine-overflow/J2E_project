@@ -24,11 +24,10 @@ public class Manager {
         return this.participants;
     }
 
-    public Event createEvent(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, 
+    public Event createEvent(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, 
      String type){
-        Event e = new Event(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
+        Event e = new Event(title, theme, startingDate, length, nbMaxParticipant, description, type);
         this.events.add(e);
-        this.participants.add(organizer);
         return e;
     }
 

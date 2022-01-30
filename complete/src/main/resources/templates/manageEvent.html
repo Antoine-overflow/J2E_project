@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Manage Event - PJEE</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/style.css"></style>
+</head>
+<body>
+    <div style="width: 100vw;height:100vh;display: flex;">
+        <div id="manage-event-container" class="big-form-box">
+            <h1>Manage event :</h1>
+            <button id="button-add-event" class="button" onclick="window.location.href = '/addEvent';">Add Event</button>
+            <button id="button-add-event" class="button" onclick="window.location.href = '/';">Home</button>
+            <div class="separator"></div>
+
+            <div th:each="event: ${events}" class="row-event" th:id="${event.id_event}">
+                <div  class="row-event-contain">
+                    <div class="row-event-text"><p th:text="${event.title}"></p></div>
+                    <div class="row-event-text"><p th:text="${event.type}"></p></div>
+                    <div class="row-event-text"><p th:text="${event.theme}"></p></div>
+                    <div class="row-event-text"><p th:text="${event.nbMaxParticipant}"></p></div>
+                    <div class="row-event-text"><p th:text="${event.nbMaxParticipant}"></p></div>
+                </div>
+                <div class="row-event-edit">
+                    <p>+</p>
+                </div>
+                <div class="row-event-delete">
+                    <p>x</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="scripts/manageEvent.js"></script>
+</body>

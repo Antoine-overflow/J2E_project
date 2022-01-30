@@ -2,7 +2,6 @@ package com.example.servingwebcontent.Metier;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.*;
 
@@ -15,7 +14,7 @@ public class Event {
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private long id_event;
+    public long id_event;
 
     @Column(name ="title")
     public String title; //Title of the event
@@ -36,14 +35,11 @@ public class Event {
     public String description; // Description of the event
   
     @OneToOne 
-    @JoinColumn( name="id" )
+    @JoinColumn( name="id_organizer")
     public Participant organizer; // The organizer of the event
 
     @Column(name ="type")
     public String type; //The type of the event
-
-    @Column(name ="Number_of_participant")
-    private int nbParticipant = 1; // The number of participant for the event
   
     @ManyToMany
     @JoinTable(
@@ -56,7 +52,7 @@ public class Event {
     // Event constructor 
     public Event(){} // For Hibernate
 
-    public Event(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, Participant organizer, String type){
+    public Event(String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, String type){
         this.title = title;
         this.description = description;
         this.theme = theme;
@@ -65,9 +61,7 @@ public class Event {
         // this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
-        this.id_event = Objects.hash(title,theme,description,type,startingDate);
         this.participants = new ArrayList<Participant>();
-        participants.add(organizer);
     }
 
     // Event getters
@@ -107,10 +101,6 @@ public class Event {
         return this.type;
     }
 
-    public int getNbParticipant(){
-        return this.nbParticipant;
-    }
-
     public List<Participant> getParticipants(){
         return this.participants;
     }
@@ -146,20 +136,6 @@ public class Event {
 
     public void setType(String type){
         this.type = type;
-    }
-
-    // Add a participant to an event
-    public void addParticipant(Participant participant){
-        //First we check if we can accept the participant
-        if (this.nbMaxParticipant<=this.nbParticipant){
-            return;
-        }
-        
-        // We add the participant to the list of participant for the event
-        this.participants.add(participant);
-
-        // We increment the number of participant
-        this.nbParticipant++;
     }
 
     //Detail display of the event

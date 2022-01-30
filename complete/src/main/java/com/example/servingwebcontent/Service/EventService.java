@@ -8,6 +8,7 @@ import com.example.servingwebcontent.Session.HibernateUtils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 public class EventService {
     
@@ -19,7 +20,16 @@ public class EventService {
     public long create(String title, String theme, String startingDate,
                        int length, int nb_part_max , String description,
                        Participant organisateur, String type) {
-        Event event = new Event(title, theme, startingDate, length, nb_part_max, description, organisateur, type);
+        Event event = new Event(title, theme, startingDate, length, nb_part_max, description, type);
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.persist(event);
+        session.getTransaction().commit();
+        session.close();
+        return event.getId();
+    }
+
+    public long create(Event event){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(event);
@@ -29,11 +39,13 @@ public class EventService {
     }
 
     public boolean delete(long id) {
-        Event eventToDelete = this.get(id);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.delete(eventToDelete);
-        session.getTransaction();
+        String sql = "DELETE Event WHERE id= :ID";
+        Query query = session.createQuery(sql);
+        query.setParameter("ID", id);
+        query.executeUpdate();
+        session.getTransaction().commit();
         session.close();
         return true;
     }
@@ -47,10 +59,13 @@ public class EventService {
         return result;
     }
 
-    public List<Event> getAll() {
+    public List<Event> getAllEvent() {
         Session session = sessionFactory.openSession();
-        List<Event> result = session.createQuery("from Event").list();
+        session.getTransaction().begin();
+        String sql = "SELECT e FROM "+Event.class.getName()+" e";
+        Query<Event> query = session.createQuery(sql);
+        List<Event> liste = query.getResultList();
         session.close();
-        return result;
+        return liste;
     }
 }

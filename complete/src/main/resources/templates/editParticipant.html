@@ -15,7 +15,7 @@
             <div class="separator"></div>
             <p></p>
             <form action="/modifyParticipant" method="post">
-                <input type="number" name="id" th:value="${participant.id}" style="display:none;">
+                <input type="number" name="id" th:value="${participant.id_participant}" style="display:none;">
                 <h3>First Name:</h3>
                 <input type="text" id="input-first-name" class="input" name="firstName" placeholder="First Name" th:value="${participant.firstName}">
                 <h3>Last Name:</h3>

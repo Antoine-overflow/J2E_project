@@ -235,3 +235,76 @@ textarea {
 .row-participant-text > p {
     margin: auto 0;
 }
+
+/****************************************************** event *********************************************/
+
+.row-pevent {
+    background-color: none;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 3px;
+    display: flex;
+}
+
+.row-event-contain {
+    background-color: #1C4A47;
+    height: 100%;
+    width: calc(100% - 50px);
+    display: flex;
+}
+
+.row-event-delete {
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    height: 100%;
+    width: 25px;
+    transition: 0.25s;
+    display: flex;
+}
+
+.row-event-delete > p {
+    margin: auto;
+}
+
+.row-event-delete:hover {
+    cursor:pointer;
+    background-color: red;
+}
+
+.row-event-delete:focus {
+    background-color: red;
+}
+
+.row-event-edit {
+    background-color: #1C4A47;
+    color: #B1D2DB;
+    height: 100%;
+    width: 25px;
+    transition: 0.25s;
+    display: flex;
+}
+
+.row-event-edit > p {
+    margin: auto;
+}
+
+.row-event-edit:hover {
+    cursor:pointer;
+    background-color: orange;
+}
+
+.row-event-edit:focus {
+    background-color: orange;
+}
+
+.row-event-text {
+    display: flex;
+    padding: 0 25px;
+    color: #B1D2DB;
+    width: 20%;
+    height: 25px;
+}
+
+.row-event-text > p {
+    margin: auto 0;
+}

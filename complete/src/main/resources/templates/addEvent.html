@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Add Event - PJEE</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/style.css"></style>
+    <script src="scripts/form.js"></script>
+</head>
+<body>
+    <div style="width: 100vw;height:100vh;display: flex;">
+        <div class="form-box">
+            <h1>Create Event</h1>
+            <button id="button-add-event" class="button" onclick="window.location.href = '/';">Home</button>
+            <button id="button-add-event" class="button" onclick="window.location.href = '/manageEvent';">Manage Event</button>
+            <div class="separator"></div>
+            <form action="/saveEvent" method="post">
+                <h3>Title:</h3>
+                <input type="text" id="input-title" class="input" name="title" placeholder="Title">
+                <h3>Theme:</h3>
+                <input type="text" id="input-theme" class="input" name="theme" placeholder="Theme">
+                <h3>Type:</h3>
+                <input type="text" id="input-type" class="input" name="type" placeholder="Type">
+                <h3>Starting date:</h3>
+                <input type="date" id="input-start-date" class="input" name="startingDate" placeholder="2022-01-01">
+                <h3>Duration:</h3>
+                <input type="number" id="input-duration" class="input" name="length" placeholder="1">
+                <h3>Max people number:</h3>
+                <input type="number" id="input-max-people" class="input" name="nbMaxPeople" placeholder="10">
+                <h3>Description:</h3>
+                <textarea id="input-description" class="comment" name="description" placeholder="Description"></textarea>
+                <div style="width: 100%; text-align: center;">
+                    <input type='submit' id="submit-user" class="submit" name="user_submit" value="+"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/createEvent.js"></script>
+</body>
+</html>

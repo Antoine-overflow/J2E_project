@@ -14,7 +14,7 @@
             <div class="separator"></div>
 
 
-            <div th:each="participant: ${participants}" class="row-participant" th:id="${participant.id}">
+            <div th:each="participant: ${participants}" class="row-participant" th:id="${participant.id_participant}">
                 <div  class="row-participant-contain">
                     <div class="row-participant-text"><p th:text="${participant.firstName}"></p></div>
                     <div class="row-participant-text"><p th:text="${participant.lastName}"></p></div>
