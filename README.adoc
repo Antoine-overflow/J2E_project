@@ -22,9 +22,9 @@ your database (not recommded if you begin with PostgreSQL).
   A - Follow our instructions
     (When words are between '' you just have to write what's inside the quotes)
     
-First step : create a user named 'test'
-Second step : create a database 'test' owned by the user 'test'
-Third step : create a password 'test' for your database
+First step : create a user named 'test'.
+Second step : create a database 'test' owned by the user 'test'.
+Third step : create a password 'test' for your database.
   
   B - Create the way you want
   
