@@ -13,6 +13,21 @@
             <button id="button-add-participant" class="button" onclick="window.location.href = '/';">Home</button>
             <div class="separator"></div>
 
+            <div class="row-participant">
+                <div  class="row-participant-contain">
+                    <div class="row-participant-text"><p>First Name</p></div>
+                    <div class="row-participant-text"><p>Last Name</p></div>
+                    <div class="row-participant-text"><p>Birth Date</p></div>
+                    <div class="row-participant-text"><p>Enterprise</p></div>
+                    <div class="row-participant-text"><p>Email</p></div>
+                </div>
+                <div class="row-participant-edit">
+                    <p>+</p>
+                </div>
+                <div class="row-participant-delete">
+                    <p>x</p>
+                </div>
+            </div>
 
             <div th:each="participant: ${participants}" class="row-participant" th:id="${participant.id_participant}">
                 <div  class="row-participant-contain">

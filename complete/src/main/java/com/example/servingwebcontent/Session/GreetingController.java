@@ -88,12 +88,11 @@ public class GreetingController {
 		ParticipantService service = new ParticipantService();
 		List<Participant> participants = service.getAllParticipant();
 		model.addAttribute("participants", participants);
-		model.addAttribute("organizer", new Participant());
 		return "/addEvent";
 	}
 
 	@PostMapping("/saveEvent")
-	public String saveEvent (@RequestParam("organizer") int id, @Validated Event event, BindingResult result, Model model) {
+	public String saveEvent (@Validated Event event, BindingResult result, Model model) {
 		EventService service = new EventService();
 		service.create(event);
 		return "redirect:/manageEvent";
@@ -103,6 +102,9 @@ public class GreetingController {
 	public String editEvent (@RequestParam(name = "id", required = true, defaultValue = "0") int id, Model model) {
 		EventService service = new EventService();
 		Event event = service.getEventById(id);
+		ParticipantService sp = new ParticipantService();
+		List<Participant> participants = sp.getAllParticipant();
+		model.addAttribute("participants", participants);
 		model.addAttribute("event", event);
 		return "/editEvent";
 	}
@@ -117,8 +119,6 @@ public class GreetingController {
 	@PostMapping("updateEvent")
 	public String updateEvent(@Validated Event event, BindingResult result, Model model) {
 		EventService service = new EventService();
-		event.displayEvent();
-		service.getEventById(event.getId()).displayEvent();
 		service.update(event);
 		return "redirect:/manageEvent";
 	}

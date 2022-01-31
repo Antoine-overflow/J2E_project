@@ -35,13 +35,13 @@ public class Participant {
     @Column(name ="comment")
     public String comment = "a";
 
-    @ManyToMany
-    @JoinTable(
-        name="EVENT_USER",
-        joinColumns = @JoinColumn(name="id_participant"),
-        inverseJoinColumns = @JoinColumn(name="id_event") 
-    )
-    private List<Event> events = new ArrayList<>();
+    // @ManyToMany
+    // @JoinTable(
+    //     name="EVENT_USER",
+    //     joinColumns = @JoinColumn(name="id_participant"),
+    //     inverseJoinColumns = @JoinColumn(name="id_event") 
+    // )
+    // private List<Event> events = new ArrayList<>();
 
     // Participant constructor
     public Participant(){} // For Hibernate

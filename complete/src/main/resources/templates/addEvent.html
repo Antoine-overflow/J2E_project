@@ -13,7 +13,7 @@
             <button id="button-add-event" class="button" onclick="window.location.href = '/';">Home</button>
             <button id="button-add-event" class="button" onclick="window.location.href = '/manageEvent';">Manage Event</button>
             <div class="separator"></div>
-            <form action="/saveEvent" method="post">
+            <form id="add-event-form" action="/saveEvent" method="post">
                 <h3>Title:</h3>
                 <input type="text" id="input-title" class="input" name="title" placeholder="Title">
                 <h3>Theme:</h3>
@@ -25,10 +25,11 @@
                 <h3>Duration:</h3>
                 <input type="number" id="input-duration" class="input" name="length" placeholder="1">
                 <h3>Organizer:</h3>
-                <select th:field="${participants}" id="organizer">
+                <!-- <input type="number"  id="input-orga" class="input" name="orga"> -->
+                <!-- <select id="orga" form="add-event-form" name="orga">
                     <option value="">Select organizer</option>
                     <option th:each="participant: ${participants}" th:value="${participant.id_participant}" th:text="${participant.lastName}"></option>
-                </select>
+                </select> -->
                 <h3>Max people number:</h3>
                 <input type="number" id="input-max-people" class="input" name="nbMaxParticipant" placeholder="10">
                 <h3>Description:</h3>

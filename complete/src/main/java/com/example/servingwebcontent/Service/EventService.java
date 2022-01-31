@@ -17,15 +17,15 @@ public class EventService {
     public EventService() {
     }
 
-    public long create(String title, String theme, String startingDate, int length, int nb_part_max , String description, Participant organisateur, String type) {
-        Event event = new Event(title, theme, type, startingDate, length, organisateur, nb_part_max, description);
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.persist(event);
-        session.getTransaction().commit();
-        session.close();
-        return event.getId();
-    }
+    // public long create(String title, String theme, String startingDate, int length, int nb_part_max , String description, Participant organisateur, String type) {
+    //     Event event = new Event(title, theme, type, startingDate, length, organisateur, nb_part_max, description);
+    //     Session session = sessionFactory.openSession();
+    //     session.beginTransaction();
+    //     session.persist(event);
+    //     session.getTransaction().commit();
+    //     session.close();
+    //     return event.getId();
+    // }
 
     public long create(Event event){
         Session session = sessionFactory.openSession();

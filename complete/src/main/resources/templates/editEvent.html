@@ -25,6 +25,10 @@
                 <input type="date" id="input-start-date" class="input" name="startingDate" placeholder="2022-01-01" th:value="${event.startingDate}">
                 <h3>Duration:</h3>
                 <input type="number" id="input-duration" class="input" name="length" placeholder="1" th:value="${event.length}">
+                <!-- <select id="orga" name="orga">
+                    <option value="">Select organizer</option>
+                    <option th:each="participant: ${participants}" th:value="${participant.id_participant}" th:text="${participant.lastName}"></option>
+                </select> -->
                 <h3>Max people number:</h3>
                 <input type="number" id="input-max-people" class="input" name="nbMaxParticipant" placeholder="10" th:value="${event.nbMaxParticipant}">
                 <h3>Description:</h3>

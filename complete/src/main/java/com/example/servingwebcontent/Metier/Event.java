@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.example.servingwebcontent.Service.ParticipantService;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -33,10 +35,9 @@ public class Event {
 
     @Column(name ="descrption")
     public String description; // Description of the event
-  
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name="id_organizer")
-    public Participant organizer; // The organizer of the event
+    
+    // @Column(name = "orga")
+    // public int orga;
 
     @Column(name ="type")
     public String type; //The type of the event
@@ -50,56 +51,30 @@ public class Event {
     // private List<Participant> participants = new ArrayList<Participant>(); // The list of participant for the event
 
     // Event constructor 
-    public Event(){} // For Hibernate
+    public Event(){
+    } // For Hibernate
 
-    public Event(String title, String theme, String type, String startingDate, int length, Participant organizer, int nbMaxParticipant, String description){
+    public Event(String title, String theme, String type, String startingDate, int length, int nbMaxParticipant, String description){
         this.title = title;
         this.description = description;
         this.theme = theme;
         this.startingDate = startingDate;
         this.length = length;
-        this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
         // this.participants = new ArrayList<Participant>();
+
     }
 
-    public Event(String title, String theme, String type, String startingDate, Participant organizer, int length, int nbMaxParticipant){
+    public Event(String title, String theme, String type, String startingDate, int length, int nbMaxParticipant){
         this.title = title;
         this.theme = theme;
         this.startingDate = startingDate;
         this.length = length;
-        this.organizer = organizer;
         this.type = type;
         this.nbMaxParticipant = nbMaxParticipant;
         // this.participants = new ArrayList<Participant>();
         this.description = "";
-    }
-
-    public Event(int id_event, String title, String theme, String type, String startingDate, int length, Participant organizer, int nbMaxParticipant, String description){
-        this.id_event = id_event;
-        this.title = title;
-        this.description = description;
-        this.theme = theme;
-        this.startingDate = startingDate;
-        this.length = length;
-        this.organizer = organizer;
-        this.type = type;
-        this.nbMaxParticipant = nbMaxParticipant;
-        // this.participants = new ArrayList<Participant>();
-    }
-
-    public Event(int id_event, String title, String theme, String type, String startingDate, int length, Participant organizer, int nbMaxParticipant){
-        this.id_event = id_event;
-        this.title = title;
-        this.description = "";
-        this.theme = theme;
-        this.startingDate = startingDate;
-        this.length = length;
-        this.organizer = organizer;
-        this.type = type;
-        this.nbMaxParticipant = nbMaxParticipant;
-        // this.participants = new ArrayList<Participant>();
     }
 
     // Event getters
@@ -131,13 +106,14 @@ public class Event {
         return this.description;
     }
 
-    public Participant getOrganizer(){
-        return this.organizer;
-    }
-
     public String getType(){
         return this.type;
     }
+
+    // public Participant getOrganizer(){
+    //     ParticipantService service = new ParticipantService();
+    //     return service.getParticipantById(this.orga);
+    // }
 
     // public List<Participant> getParticipants(){
     //     return this.participants;
@@ -172,13 +148,13 @@ public class Event {
         this.description = description;
     }
 
-    public void setOrganizer(Participant organiser){
-        this.organizer = organiser;
-    }
-
     public void setType(String type){
         this.type = type;
     }
+
+    // public void setOrganizer(Participant organizer){
+    //     this.orga = organizer.getId();
+    // }
 
     //Detail display of the event
     public void displayEvent(){
@@ -188,8 +164,7 @@ public class Event {
         System.out.println("Event starting date : " + this.startingDate);
         System.out.println("Event day duration : " + Integer.toString(this.length));
         System.out.println("Event max participant : " + Integer.toString(this.nbMaxParticipant));
-        System.out.println("Event description : " + this.description);        
-        // System.out.println("Event organizer name : " + this.organizer.getFirstName() + " " + this.organizer.getLastName());
+        System.out.println("Event description : " + this.description);
         System.out.println("Event type : " + this.type);
     }
 }
