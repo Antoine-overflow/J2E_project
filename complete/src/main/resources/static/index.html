@@ -4,6 +4,7 @@
     <title>Home - PJEE</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles/style.css"></style>
+    <script src="./scripts/readCSV.js"></script>
 </head>
 <body>
     <div style="width: 100vw;height:100vh;display: flex;">
@@ -11,6 +12,7 @@
             <h1>Acceuil Administrateur :</h1>
             <button id="button-manage-participant" class="button" onclick="window.location.href = '/manageParticipant';"">Manage Participant</button>
             <button id="button-manage-event" class="button">Manage Event</button>
+            <input type="file" id="uploadfile" oninput="readImage(this)">
         </div>
     </div>
 </body>
