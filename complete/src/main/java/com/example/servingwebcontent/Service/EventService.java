@@ -17,10 +17,8 @@ public class EventService {
     public EventService() {
     }
 
-    public long create(String title, String theme, String startingDate,
-                       int length, int nb_part_max , String description,
-                       Participant organisateur, String type) {
-        Event event = new Event(title, theme, startingDate, length, nb_part_max, description, type);
+    public long create(String title, String theme, String startingDate, int length, int nb_part_max , String description, Participant organisateur, String type) {
+        Event event = new Event(title, theme, type, startingDate, length, organisateur, nb_part_max, description);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(event);
@@ -38,7 +36,7 @@ public class EventService {
         return event.getId();
     }
 
-    public boolean delete(long id) {
+    public boolean delete(int id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String sql = "DELETE Event WHERE id= :ID";
@@ -50,7 +48,7 @@ public class EventService {
         return true;
     }
 
-    public Event getEventById(long id) {
+    public Event getEventById(int id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String sql = "SELECT e FROM "+Event.class.getName()+" e WHERE e.id_event="+id;

@@ -19,7 +19,7 @@ public class EventTest {
         String birthDate = "1967-8-19";
         Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
         String type = "investure";
-        Event CEOinvesture = new Event(title,theme,startingDate,length,nbMaxParticipant,description,type);
+        Event CEOinvesture = new Event(title,theme,type,startingDate,length,organizer,nbMaxParticipant,description);
         Assert.assertEquals(CEOinvesture.getTitle(), title);
         Assert.assertEquals(CEOinvesture.getTheme(), theme);
         Assert.assertEquals(CEOinvesture.getStartingDate(), startingDate);
@@ -72,7 +72,7 @@ public class EventTest {
         Participant MS = new Participant("MS", "Gabarnie", "ms.gaba@gmail.com", "JulesPierratEIRL", birthDateMS);
 
         String startingDate = "2022-2-15";
-        Event anniv = new Event("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", "anniversaire");
+        Event anniv = new Event("anniv", "anniversaire", "anniversaire", startingDate, 1, MS, 3, "anniversaire de Jules et moi");
         anniv.displayEvent();
     }
 }

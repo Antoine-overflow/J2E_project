@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -63,7 +64,7 @@ public class GreetingController {
 	public String modifyParticipant(@Validated Participant participant, BindingResult result, Model model) {
 		participant.displayParticipant();
 		ParticipantService service = new ParticipantService();
-		long r = service.update(participant);
+		service.update(participant);
 		return"redirect:/manageParticipant";
 	}
 
@@ -84,11 +85,15 @@ public class GreetingController {
 
 	@GetMapping("/addEvent")
 	public String addEvent(Model model){
+		ParticipantService service = new ParticipantService();
+		List<Participant> participants = service.getAllParticipant();
+		model.addAttribute("participants", participants);
+		model.addAttribute("organizer", new Participant());
 		return "/addEvent";
 	}
 
 	@PostMapping("/saveEvent")
-	public String saveEvent (@Validated Event event, BindingResult result, Model model) {
+	public String saveEvent (@RequestParam("organizer") int id, @Validated Event event, BindingResult result, Model model) {
 		EventService service = new EventService();
 		service.create(event);
 		return "redirect:/manageEvent";
@@ -112,6 +117,8 @@ public class GreetingController {
 	@PostMapping("updateEvent")
 	public String updateEvent(@Validated Event event, BindingResult result, Model model) {
 		EventService service = new EventService();
+		event.displayEvent();
+		service.getEventById(event.getId()).displayEvent();
 		service.update(event);
 		return "redirect:/manageEvent";
 	}
