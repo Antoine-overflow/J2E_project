@@ -47,9 +47,10 @@ public class ParticipantService {
     public Participant getParticipantById(int id){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String sql = "SELECT e FROM "+Participant.class.getName()+" e WHERE e.id="+id;
+        String sql = "SELECT e FROM "+Participant.class.getName()+" e WHERE e.id_participant="+id;
         Query<Participant> query = session.createQuery(sql);
         Participant p = query.getResultList().get(0);
+        session.close();
         return p;
     }
 

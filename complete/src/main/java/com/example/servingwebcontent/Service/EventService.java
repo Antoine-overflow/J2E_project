@@ -50,13 +50,14 @@ public class EventService {
         return true;
     }
 
-    public Event get(long id) {
+    public Event getEventById(long id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Event result = session.get(Event.class, id);
-        session.getTransaction().commit();
+        String sql = "SELECT e FROM "+Event.class.getName()+" e WHERE e.id_event="+id;
+        Query<Event> query = session.createQuery(sql);
+        Event e = query.getResultList().get(0);
         session.close();
-        return result;
+        return e;
     }
 
     public List<Event> getAllEvent() {
@@ -67,5 +68,14 @@ public class EventService {
         List<Event> liste = query.getResultList();
         session.close();
         return liste;
+    }
+
+    public long update(Event event){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(event);
+        session.getTransaction().commit();
+        session.close();
+        return event.getId();
     }
 }

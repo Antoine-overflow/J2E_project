@@ -36,31 +36,31 @@ public class ManagerTest {
         Assert.assertEquals(e1.getType(), e2.getType());
     }
 
-    @Test
-    public void testCreateEvent(){
-        // Event creation
-        String title = "new CEO investure";
-        String theme = "investure";
-        String startingDate = "2022-2-2";
-        int length = 1;
-        int nbMaxParticipant = 1000000;
-        String description = "Investure of ower new CEO";
-        String birthDate = "1967-8-19";
-        Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
-        String type = "investure";
-        Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
+    // @Test
+    // public void testCreateEvent(){
+    //     // Event creation
+    //     String title = "new CEO investure";
+    //     String theme = "investure";
+    //     String startingDate = "2022-2-2";
+    //     int length = 1;
+    //     int nbMaxParticipant = 1000000;
+    //     String description = "Investure of ower new CEO";
+    //     String birthDate = "1967-8-19";
+    //     Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
+    //     String type = "investure";
+    //     Event CEOinvesture = new Event(title, theme ,startingDate ,length ,nbMaxParticipant ,description ,organizer ,type);
 
-        // Manager creation
-        List<Event> events = new ArrayList<Event>();
-        List<Participant> participants = new ArrayList<Participant>();
-        Manager app = new Manager(events, participants);
+    //     // Manager creation
+    //     List<Event> events = new ArrayList<Event>();
+    //     List<Participant> participants = new ArrayList<Participant>();
+    //     Manager app = new Manager(events, participants);
 
-        Event e = app.createEvent(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
+    //     Event e = app.createEvent(title, theme, startingDate, length, nbMaxParticipant, description, organizer, type);
 
-        testEventEquality(e, CEOinvesture);
-        Assert.assertEquals(app.getEvents().size(),1);
-        Assert.assertEquals(app.getParticipants().size(),1);
-    }
+    //     testEventEquality(e, CEOinvesture);
+    //     Assert.assertEquals(app.getEvents().size(),1);
+    //     Assert.assertEquals(app.getParticipants().size(),1);
+    // }
     
     @Test
     public void testCreateParticipant(){
@@ -79,54 +79,54 @@ public class ManagerTest {
         Assert.assertEquals(app.getParticipants().size(), 1);
     }
 
-    @Test
-    public void testListEvents(){
-        // Manager creation
-        List<Event> events = new ArrayList<Event>();
-        List<Participant> participants = new ArrayList<Participant>();
-        Manager app = new Manager(events, participants);
+    // @Test
+    // public void testListEvents(){
+    //     // Manager creation
+    //     List<Event> events = new ArrayList<Event>();
+    //     List<Participant> participants = new ArrayList<Participant>();
+    //     Manager app = new Manager(events, participants);
 
-        // Event creation
-        String startingDate = "2022-2-2";
-        String birthDate = "1967-8-19";
-        Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
-        Event CEOinvesture = app.createEvent("new CEO investure", "investure" ,startingDate ,1 ,1000000 ,"Investure of ower new CEO" ,organizer ,"investure");
+    //     // Event creation
+    //     String startingDate = "2022-2-2";
+    //     String birthDate = "1967-8-19";
+    //     Participant organizer = new Participant("Satya", "Nadella", "Satya.Nadella@microsoft.com", "Microsoft", birthDate);
+    //     Event CEOinvesture = app.createEvent("new CEO investure", "investure" ,startingDate ,1 ,1000000 ,"Investure of ower new CEO" ,organizer ,"investure");
 
-        String birthDateJ = "1998-2-21";
-        Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
-        String startingDate2 = "2022-2-15";
-        Event anniv = app.createEvent("anniv", "anniversaire", startingDate2, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
+    //     String birthDateJ = "1998-2-21";
+    //     Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
+    //     String startingDate2 = "2022-2-15";
+    //     Event anniv = app.createEvent("anniv", "anniversaire", startingDate2, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
 
-        List<String> titles = app.listEvents(false);
-        List<String> titles2 = new ArrayList<String>();
-        titles2.add(CEOinvesture.getTitle());
-        titles2.add(anniv.getTitle());
-        Assert.assertEquals(titles2, titles);
-        List<String> titles3 = app.listEvents(true);
-    }
+    //     List<String> titles = app.listEvents(false);
+    //     List<String> titles2 = new ArrayList<String>();
+    //     titles2.add(CEOinvesture.getTitle());
+    //     titles2.add(anniv.getTitle());
+    //     Assert.assertEquals(titles2, titles);
+    //     List<String> titles3 = app.listEvents(true);
+    // }
 
-    @Test
-    public void testListParticipants(){
-        // Manager creation
-        List<Event> events = new ArrayList<Event>();
-        List<Participant> participants = new ArrayList<Participant>();
-        Manager app = new Manager(events, participants);
+    // @Test
+    // public void testListParticipants(){
+    //     // Manager creation
+    //     List<Event> events = new ArrayList<Event>();
+    //     List<Participant> participants = new ArrayList<Participant>();
+    //     Manager app = new Manager(events, participants);
 
-        // Event creation
-        String birthDateJ = "1998-2-21";
-        Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
-        String startingDate = "2022-2-15";
-        Event anniv = app.createEvent("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
+    //     // Event creation
+    //     String birthDateJ = "1998-2-21";
+    //     Participant jules = new Participant("Jules", "Pierrat", "jules.pierrat@gmail.com", "Apple", birthDateJ);
+    //     String startingDate = "2022-2-15";
+    //     Event anniv = app.createEvent("anniv", "anniversaire", startingDate, 1, 3, "anniversaire de Jules et moi", jules, "anniversaire");
 
-        List<List<String>> names = app.listParticipants(anniv, false);
-        List<List<String>> names2 = new ArrayList<List<String>>();
-        List<String> firstNames = new ArrayList<String>();
-        firstNames.add(jules.getFirstName());
-        List<String> lastNames = new ArrayList<String>();
-        lastNames.add(jules.getLastName());
-        names2.add(firstNames);
-        names2.add(lastNames);
-        Assert.assertEquals(names, names2);
-        List<List<String>> names3 = app.listParticipants(anniv, true);
-    }
+    //     List<List<String>> names = app.listParticipants(anniv, false);
+    //     List<List<String>> names2 = new ArrayList<List<String>>();
+    //     List<String> firstNames = new ArrayList<String>();
+    //     firstNames.add(jules.getFirstName());
+    //     List<String> lastNames = new ArrayList<String>();
+    //     lastNames.add(jules.getLastName());
+    //     names2.add(firstNames);
+    //     names2.add(lastNames);
+    //     Assert.assertEquals(names, names2);
+    //     List<List<String>> names3 = app.listParticipants(anniv, true);
+    // }
 }

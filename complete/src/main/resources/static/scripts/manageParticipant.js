@@ -29,5 +29,5 @@ function addEventListenerManageParticipant(){
 
 // Algo
 // Add every participant
-addEventListenerManageparticipant
+addEventListenerManageParticipant();
 

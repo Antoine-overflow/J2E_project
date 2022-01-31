@@ -64,6 +64,19 @@ public class Event {
         this.participants = new ArrayList<Participant>();
     }
 
+    public Event(int id_event, String title, String theme, String startingDate, int length, int nbMaxParticipant, String description, String type){
+        this.id_event = id_event;
+        this.title = title;
+        this.description = description;
+        this.theme = theme;
+        this.startingDate = startingDate;
+        this.length = length;
+        // this.organizer = organizer;
+        this.type = type;
+        this.nbMaxParticipant = nbMaxParticipant;
+        this.participants = new ArrayList<Participant>();
+    }
+
     // Event getters
     public long getId(){
         return this.id_event;
