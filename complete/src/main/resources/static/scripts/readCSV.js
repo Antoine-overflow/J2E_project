@@ -26,7 +26,12 @@ function parseData(data){
     lbreak.forEach(res => {
        // csvData.push(res.split(","));
         csvData.push(res.split(";"));
-    });
+        // csvData[4].toString().replace('\r','');
+    });    
+    const a = csvData[0];
+    console.log(a);
+    console.log(a[4]);
+    console.log(typeof(a[4]));
     console.table(csvData);
 }
 
